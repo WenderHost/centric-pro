@@ -114,7 +114,7 @@ function remove_more_link_scroll( $link ) {
 
 	$link = preg_replace( '|#more-[0-9]+|', '', $link );
 	return $link;
-	
+
 }
 
 //* Modify the size of the Gravatar in author box
@@ -122,7 +122,7 @@ add_filter( 'genesis_author_box_gravatar_size', 'centric_author_box_gravatar_siz
 function centric_author_box_gravatar_size( $size ) {
 
 	return 96;
-	
+
 }
 
 //* Modify the size of the Gravatar in comments
@@ -131,13 +131,13 @@ function centric_comment_list_args( $args ) {
 
     $args['avatar_size'] = 60;
 	return $args;
-	
+
 }
 
 //* Remove comment form allowed tags
 add_filter( 'comment_form_defaults', 'centric_remove_comment_form_allowed_tags' );
 function centric_remove_comment_form_allowed_tags( $defaults ) {
-	
+
 	$defaults['comment_notes_after'] = '';
 	return $defaults;
 
