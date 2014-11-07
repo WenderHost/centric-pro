@@ -1,0 +1,16 @@
+{
+  "name": "centric-pro",
+  "version": "1.0.0",
+  "description": "Centric Pro theme modified for Case Antiques.",
+  "main": "style.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Wender",
+  "license": "GPLv2",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
