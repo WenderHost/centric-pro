@@ -13,6 +13,9 @@ define( 'CHILD_THEME_NAME', __( 'Centric Theme', 'centric' ) );
 define( 'CHILD_THEME_URL', 'http://my.studiopress.com/themes/centric/' );
 define( 'CHILD_THEME_VERSION', '1.1' );
 
+//* Load our widgets
+include_once( get_stylesheet_directory() . '/lib/widgets/widgets.php' );
+
 //* Add HTML5 markup structure
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 
