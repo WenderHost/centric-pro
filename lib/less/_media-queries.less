@@ -319,17 +319,26 @@ Media Queries
 
 @media only screen and (max-width: 480px) {
 
-	body,
-	.home-featured .home-widgets-1 {
-		font-size: 16px;
+	.home-featured{
+		.home-widgets-1 {
+			ul.menu li{
+				font-size: 24px;
+
+				a{
+					width: 300px;
+				}
+			}
+		}
 	}
 
-	.header-image .site-title > a {
-		background-size: contain !important;
-	}
+	.header-image{
+		.bumper {
+			min-height: 180px;
+		}
 
-	.header-image .bumper {
-		min-height: 180px;
+		.site-title > a {
+			background-size: contain !important;
+		}
 	}
 
 }
