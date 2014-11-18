@@ -11,8 +11,41 @@ remove_action( 'genesis_entry_header', 'genesis_post_info', 12 ); // Remove item
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' ); // Remove `Filed Under:`
 
 add_filter( 'genesis_build_crumbs', 'centric_item_build_crumbs', 10, 2 ); // Remove `Item`, add the auction to the breadcrumbs
-add_action( 'genesis_entry_content', 'centric_item_auctioninfo', 8 );
+add_action( 'genesis_entry_content', 'centric_item_auctioninfo', 8 ); // Add .moreinfo box to item content
+add_action( 'genesis_entry_content', 'centric_item_attachments', 20 ); // Add attached images to item content
 
+function centric_item_attachments(){
+	global $post;
+
+	$args = array(
+		'post_parent' => $post->ID,
+		'post_type' => 'attachment',
+		'post_mime_type' => 'image'
+	);
+	$images = get_children( $args );
+
+	if( $images ){
+		$gallery_images = array();
+		foreach( $images as $attachment_id => $attachment ){
+			$image_ids[] = $attachment_id;
+			$fullsize = wp_get_attachment_image_src( $attachment_id, 'fullsize' );
+			$thumbnail = wp_get_attachment_image_src( $attachment_id, 'thumbnail' );
+			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fillmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large' ) . '</a>';
+		}
+		echo '<div class="item-gallery">' . implode( "\n", $gallery_images ) . '</div>';
+	}
+}
+
+/**
+ * Adds .moreinfo box to item content.
+ *
+ * @see get_metadata() 		used to retrieve custom meta data added to an item's auction
+ * @global object $post WordPress post object.
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
 function centric_item_auctioninfo(){
 	global $post;
 	$terms = wp_get_object_terms( $post->ID, 'auction' );

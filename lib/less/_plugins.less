@@ -4,14 +4,6 @@ Plugins
 
 /* Auctions for WordPress
 --------------------------------------------- */
-.highlight{
-	border-bottom: 1px solid #eee;
-	margin-bottom: 80px;
-	padding-bottom: 40px;
-}
-.highlight-alert{
-	margin-bottom: 40px;
-}
 .entry-content .moreinfo{
 	width: 40%;
 	text-align: left;
@@ -56,6 +48,29 @@ Plugins
 			}
 		}
 	}
+}
+
+.item-gallery{
+	clear: both;
+
+	.image{
+		display: block;
+		clear: both;
+		margin-bottom: 10px;
+
+		img{
+			border: 1px solid darken(@centric-red,20%);
+		}
+	}
+}
+
+.highlight{
+	border-bottom: 1px solid #eee;
+	margin-bottom: 80px;
+	padding-bottom: 40px;
+}
+.highlight-alert{
+	margin-bottom: 40px;
 }
 
 .centric-pro-red .moreinfo{
@@ -207,7 +222,9 @@ div.gform_wrapper .gform_footer input[type=submit] {
 
 /* Jetpack
 --------------------------------------------- */
-
+body #lightbox-overlay{
+	z-index: 999;
+}
 #wpstats {
 	display: none;
 }
