@@ -16,8 +16,8 @@ Plugins
 	width: 40%;
 	text-align: left;
 	padding: 1em 1em 0 1em;
-	border: 1px solid darken(@centric-red,20%);
-	background-color: lighten(@centric-red,35%);
+	border: 1px solid darken(@centric-charcoal,20%);
+	background-color: lighten(@centric-charcoal,35%);
 	margin: 0 0 20px 40px;
 
 	a.button{
@@ -25,20 +25,20 @@ Plugins
 		font-size: 18px;
 		font-weight: bold;
 
-		background-color: @centric-red;
+		background-color: @centric-charcoal;
 		color: #fff;
 		text-align: center;
 		text-transform: uppercase;
 		border-radius: 3px;
 		-webkit-border-radius: 3px;
 		-moz-border-radius: 3px;
-		border: 1px solid darken(@centric-red,20%);
+		border: 1px solid darken(@centric-charcoal,20%);
 		margin-bottom: 20px;
 		padding: 16px;
 
 		&:hover{
 			text-decoration: none;
-			background-color: lighten(@centric-red,28%);
+			background-color: lighten(@centric-charcoal,28%);
 			color: darken(@centric-red,20%);
 		}
 	}
@@ -54,6 +54,21 @@ Plugins
 			&:last-child{
 				margin-bottom: 0;
 			}
+		}
+	}
+}
+
+.centric-pro-red .moreinfo{
+	border-color: darken(@centric-red,20%);
+	background-color: lighten(@centric-red,35%);
+
+	a.button{
+		background-color: @centric-red;
+		border-color: darken(@centric-red,20%);
+
+		&:hover{
+			background-color: lighten(@centric-red,28%);
+			color: darken(@centric-red,20%);
 		}
 	}
 }
