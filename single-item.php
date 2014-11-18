@@ -30,7 +30,7 @@ function centric_item_attachments(){
 			$image_ids[] = $attachment_id;
 			$fullsize = wp_get_attachment_image_src( $attachment_id, 'fullsize' );
 			$thumbnail = wp_get_attachment_image_src( $attachment_id, 'thumbnail' );
-			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fillmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large' ) . '</a>';
+			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fitmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large' ) . '</a>';
 		}
 		echo '<div class="item-gallery">' . implode( "\n", $gallery_images ) . '</div>';
 	}
