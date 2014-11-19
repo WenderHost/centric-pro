@@ -4,28 +4,50 @@ Content Area
 
 /* Home Page
 --------------------------------------------- */
+.home-widgets{
+	.widget {
+		clear: both;
+		margin: 0 auto;
+		max-width: 1280px;
+		padding: 40px 0;
+		overflow: hidden;
+		text-align: center;
 
-.home-widgets .widget {
-	clear: both;
-	margin: 0 auto;
-	max-width: 1280px;
-	padding: 40px 0;
-	overflow: hidden;
-	text-align: center;
-}
+		&:first-child {
+			padding-top: 140px;
+		}
 
-.home-widgets .widget:first-child {
-	padding-top: 140px;
-}
+		&.widget_text{
+			padding-top: 80px;
+			padding-bottom: 0;
+			h2{
+				margin-bottom: 0;
+			}
+		}
 
-.home-widgets .widget:last-child {
-	padding-bottom: 140px;
-}
+		&.widget_text:first-child{
+			padding-top: 60px;
+			padding-bottom: 0;
 
-.home-widgets .more-from-category,
-.home-widgets .featured-content article ~ ul,
-.home-widgets .featured-content article ~ .widget-title {
-    clear: both;
+			h2{
+				margin-bottom: 0;
+			}
+		}
+
+		&:last-child {
+			padding-bottom: 100px;
+		}
+
+		&.widget_nav_menu:last-child{
+			padding-bottom: 80px;
+		}
+	}
+
+	.more-from-category,
+	.featured-content article ~ ul,
+	.featured-content article ~ .widget-title{
+		clear: both;
+	}
 }
 
 .home-widgets .entry-content > p:last-child,

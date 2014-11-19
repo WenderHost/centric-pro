@@ -189,6 +189,22 @@ Media Queries
 		width: 100%;
 	}
 
+	.home-widgets{
+		.home-widgets-2,
+		.home-widgets-3,
+		.home-widgets-4,
+		.home-widgets-5{
+
+			.widget_nav_menu{
+				padding: 0;
+			}
+
+			.widget_text:first-child{
+				padding-bottom: 20px;
+			}
+		}
+	}
+
 
 }
 
@@ -307,6 +323,29 @@ Media Queries
 
 	.home-featured .home-widgets-1 {
 		padding: 120px 0 60px;
+	}
+
+	.home-widgets{
+		.home-widgets-2,
+		.home-widgets-3,
+		.home-widgets-4,
+		.home-widgets-5{
+
+			.widget_nav_menu{
+				width: 100%;
+				float: none;
+				clear: both;
+				padding: 0;
+
+				li{
+					font-size: 24px;
+				}
+			}
+
+			.widget_text + .widget_nav_menu{
+				padding-top: 20px;
+			}
+		}
 	}
 
 	.arrow a:before {
