@@ -61,10 +61,16 @@ function centric_item_auctioninfo(){
 			foreach( $terms as $term ){
 				if( $term->taxonomy == 'auction' ){
 					$meta = get_metadata( 'auction', $term->term_id, 'meta', true );
+					$button_classes = array( 'button' );
 
 					$auction_timestamp = strtotime( get_metadata( 'auction', $term->term_id, 'date', true ) );
 					$current_timestamp = strtotime( date( 'Y-m-d', current_time( 'timestamp' ) ) );
-					$link_text = ( $current_timestamp > $auction_timestamp )? 'View Final Price' : 'Bid Now';
+					if( $current_timestamp < $auction_timestamp ){
+						$link_text = 'Bid Now';
+						$button_classes[] = 'green';
+					} else {
+						$link_text = 'View Final Price';
+					}
 
 					if( ! empty( $realized ) )
 						echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1></li>';
@@ -72,12 +78,12 @@ function centric_item_auctioninfo(){
 					if( ! empty( $meta['auction_id'] ) ){
 						if( ! $lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
 
-						echo '<li><a class="button" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
+						echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
 					}
 					if( null != get_post_meta( $post->ID, '_igavel_lotnum', true ) ){
 						$igavel_lotnum = get_post_meta( $post->ID, '_igavel_lotnum', true );
 						$igavel_item_url = 'http://bid.igavelauctions.com/Bidding.taf?_function=detail&Auction_uid1=' . $igavel_lotnum;
-						echo '<li><a class="button" target="_blank" href="' . $igavel_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on iGavel">' . $link_text . '</a></li>';
+						echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $igavel_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on iGavel">' . $link_text . '</a></li>';
 					}
 				}
 			}
