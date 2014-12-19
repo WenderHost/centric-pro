@@ -53,6 +53,10 @@ function centric_item_auctioninfo(){
     <div class="moreinfo alignright">
     	<ul>
 		<?php
+		$high_est = get_post_meta( $post->ID, '_high_est', true );
+		$low_est = get_post_meta( $post->ID, '_low_est', true );
+		$realized = get_post_meta( $post->ID, '_realized', true );
+
 		if( $terms ){
 			foreach( $terms as $term ){
 				if( $term->taxonomy == 'auction' ){
@@ -62,8 +66,11 @@ function centric_item_auctioninfo(){
 					$current_timestamp = strtotime( date( 'Y-m-d', current_time( 'timestamp' ) ) );
 					$link_text = ( $current_timestamp > $auction_timestamp )? 'View Final Price' : 'Bid Now';
 
-					if( !empty( $meta['auction_id'] ) ){
-						if( !$lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
+					if( ! empty( $realized ) )
+						echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1></li>';
+
+					if( ! empty( $meta['auction_id'] ) ){
+						if( ! $lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
 
 						echo '<li><a class="button" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
 					}
@@ -76,9 +83,6 @@ function centric_item_auctioninfo(){
 			}
 		}
 
-		$high_est = get_post_meta( $post->ID, '_high_est', true );
-		$low_est = get_post_meta( $post->ID, '_low_est', true );
-		$realized = get_post_meta( $post->ID, '_realized', true );
 		if(!empty($low_est)) echo '<li><strong>Low Estimate:</strong> '.AuctionShortcodes::format_price( $low_est ). '</li>';
 		if(!empty($high_est)) echo '<li><strong>High Estimate:</strong> '.AuctionShortcodes::format_price( $high_est ). '</li>';
 		if( !empty( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">'.AuctionShortcodes::format_price( $realized ). '</span></li>';
