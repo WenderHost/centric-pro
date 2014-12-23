@@ -20,7 +20,9 @@ function centric_item_attachments(){
 	$args = array(
 		'post_parent' => $post->ID,
 		'post_type' => 'attachment',
-		'post_mime_type' => 'image'
+		'post_mime_type' => 'image',
+		'orderby' => 'menu_order',
+		'order' => 'ASC'
 	);
 	$images = get_children( $args );
 
