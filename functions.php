@@ -107,6 +107,22 @@ function centric_post_title() {
 
 }
 
+/**
+ * Displays the #top-bar above the site-header.
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
+add_action( 'genesis_before_header', 'centric_top_bar' );
+function centric_top_bar(){
+	if( ! is_active_sidebar( 'top-bar-widgets' ) )
+		return;
+?>
+<div id="top-bar"><?php dynamic_sidebar( 'top-bar-widgets' ) ?></div>
+<?php
+}
+
 // Modify the Genesis Breadcrumb arguments
 add_filter( 'genesis_breadcrumb_args', 'centric_breadcrumb_args' );
 function centric_breadcrumb_args( $args ){
@@ -168,6 +184,11 @@ remove_action( 'genesis_after_entry', 'genesis_after_entry_widget_area' );
 add_action( 'genesis_after_entry', 'genesis_after_entry_widget_area', 5 );
 
 //* Register widget areas
+genesis_register_sidebar( array(
+	'id'          => 'top-bar-widgets',
+	'name'        => __( 'Top Bar', 'centric' ),
+	'description' => __( 'This bar appears above the site header.', 'centric' ),
+) );
 genesis_register_sidebar( array(
 	'id'          => 'home-widgets-1',
 	'name'        => __( 'Home 1', 'centric' ),
