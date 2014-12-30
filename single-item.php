@@ -14,6 +14,13 @@ add_filter( 'genesis_build_crumbs', 'centric_item_build_crumbs', 10, 2 ); // Rem
 add_action( 'genesis_entry_content', 'centric_item_auctioninfo', 8 ); // Add .moreinfo box to item content
 add_action( 'genesis_entry_content', 'centric_item_attachments', 20 ); // Add attached images to item content
 
+/**
+ * Displays all images for an item
+ *
+ * @since 1.0.0
+ *
+ * @return void
+ */
 function centric_item_attachments(){
 	global $post;
 
