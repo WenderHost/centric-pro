@@ -1,4 +1,94 @@
 /*
+Top Bar
+---------------------------------------------------------------------------------------------------- */
+@topbar_h: 40px;
+@adminbar_h: 32px;
+@bumper_h: 160px;
+
+#top-bar{
+	background-color: #333;
+	height: @topbar_h;
+	line-height: @topbar_h;
+	color: #fff;
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	width: 100%;
+	text-align: right;
+
+	a{
+		color: #fff;
+
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	& + .site-header{
+		top: @topbar_h;
+	}
+
+	& ~ .bumper {
+		min-height: @bumper_h + @topbar_h;
+	}
+
+	.search-form{
+		width: 368px;
+		margin: 5px 8px 0 8px;
+		float: right;
+
+		input[name="s"]{
+			padding: 4px;
+			float: left;
+			width: 280px;
+		}
+
+		input[type="submit"] {
+			border: 0;
+			position: relative;
+			height: 30px;
+			padding: 0 12px;
+			margin-left: 6px;
+			width: auto;
+			float: left;
+			font-weight: normal;
+			text-transform: capitalize;
+			background-color: lighten(#000,45%);
+			border-radius: 3px;
+			-webkit-border-radius: 3px;
+			-moz-border-radius: 3px;
+
+			&:hover{
+				background-color: lighten(#000,60%);
+			}
+		}
+	}
+
+	section.widget{
+		margin: 0;
+		display: inline-block;
+
+		&.widget_text{
+			float: left;
+			margin: 0 8px;
+			font-size: 14px;
+		}
+	}
+}
+
+.admin-bar{
+	#top-bar{
+		top: @adminbar_h;
+
+		& + .site-header{
+			top: @adminbar_h + @topbar_h;
+		}
+	}
+}
+
+/*
 Site Header
 ---------------------------------------------------------------------------------------------------- */
 
@@ -11,8 +101,11 @@ Site Header
 	z-index: 999;
 }
 
-.admin-bar .site-header {
-	top: 32px;
+
+.admin-bar{
+	.site-header{
+		top: @adminbar_h;
+	}
 }
 
 .site-header .wrap {
@@ -20,7 +113,7 @@ Site Header
 }
 
 .bumper {
-	min-height: 160px;
+	min-height: @bumper_h;
 }
 
 .site-header .wrap {

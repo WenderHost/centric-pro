@@ -118,6 +118,21 @@ Media Queries
 		padding: 0px 5%;
 	}
 
+	/* Hide the top bar */
+	#top-bar{
+		display: none;
+
+		& + .site-header{
+			top: 0;
+		}
+	}
+
+	.admin-bar #top-bar{
+		& + .site-header{
+			top: @adminbar_h;
+		}
+	}
+
 	.header-image .site-title > a {
 		background-position: top !important;
 	}
