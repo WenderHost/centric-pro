@@ -24,6 +24,8 @@ add_action( 'genesis_entry_content', 'centric_item_attachments', 20 ); // Add at
 function centric_item_attachments(){
 	global $post;
 
+	$parent_title = get_the_title( $post->ID );
+
 	$args = array(
 		'post_parent' => $post->ID,
 		'post_type' => 'attachment',
@@ -39,7 +41,12 @@ function centric_item_attachments(){
 			$image_ids[] = $attachment_id;
 			$fullsize = wp_get_attachment_image_src( $attachment_id, 'fullsize' );
 			$thumbnail = wp_get_attachment_image_src( $attachment_id, 'thumbnail' );
-			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fitmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large' ) . '</a>';
+
+			$atts = array(
+				'alt' => esc_attr( $parent_title ),
+			);
+
+			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fitmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large', false, $atts ) . '</a>';
 		}
 		echo '<div class="item-gallery">' . implode( "\n", $gallery_images ) . '</div>';
 	}
