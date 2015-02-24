@@ -85,16 +85,22 @@ function centric_item_auctioninfo(){
 						$link_text = 'Bid Now';
 						$button_classes[] = 'green';
 					} else {
+						if( ! $realized )
+							$realized = 'PASSED';
 						$link_text = 'View Final Price';
 					}
 
-					if( ! empty( $realized ) )
+					if( ! empty( $realized ) && is_numeric( $realized ) ){
 						echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1></li>';
+					} else if( 'PASSED' == $realized ){
+						echo '<li><h1 style="text-align: center;">PASSED</h1></li>';
+					}
 
 					if( ! empty( $meta['auction_id'] ) ){
 						if( ! $lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
 
-						echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
+						if( 'PASSED' != $realized )
+							echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
 					}
 					if( null != get_post_meta( $post->ID, '_igavel_lotnum', true ) ){
 						$igavel_lotnum = get_post_meta( $post->ID, '_igavel_lotnum', true );
@@ -107,7 +113,7 @@ function centric_item_auctioninfo(){
 
 		if(!empty($low_est)) echo '<li><strong>Low Estimate:</strong> '.AuctionShortcodes::format_price( $low_est ). '</li>';
 		if(!empty($high_est)) echo '<li><strong>High Estimate:</strong> '.AuctionShortcodes::format_price( $high_est ). '</li>';
-		if( !empty( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">'.AuctionShortcodes::format_price( $realized ). '</span></li>';
+		if( ! empty( $realized ) && is_numeric( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">'.AuctionShortcodes::format_price( $realized ). '</span></li>';
 		?>
 		<li><strong>More Information:</strong><br />
         For more information on this or any other item, email
