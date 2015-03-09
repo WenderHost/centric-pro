@@ -78,9 +78,14 @@ class CaseAnti_Past_Auctions extends WP_Widget {
 			$filtered_auctions = array();
 			foreach( $auctions as $auction ){
 				$name = $auction->name;
-				preg_match( '/[0-9]{4}\s[0-9]{1,2}\s[0-9]{1,2}/', $name, $matches );
+				preg_match( '/([0-9]{4})\s([0-9]{1,2})\s([0-9]{1,2})/', $name, $matches );
 				if( $matches ){
-					$date = str_replace( ' ', '-', $matches[0] );
+					if( $matches[1] == 2010 && $matches[2] < 10 )
+						continue;
+					if( $matches[1] < 2010 )
+						continue;
+
+					$date = $matches[1] . '-' . $matches[2] . '-' . $matches[3];
 					$filtered_name = str_replace( $matches[0], date( 'M j, Y', strtotime( $date ) ), $name );
 					$filtered_auctions[] = array( 'name' => $filtered_name, 'permalink' => get_term_link( $auction ) );
 				}
@@ -89,7 +94,7 @@ class CaseAnti_Past_Auctions extends WP_Widget {
 				$auctions = $filtered_auctions;
 
 			$cols = 3;
-			$auctions_per_col = round( count( $auctions )/$cols );
+			$auctions_per_col = ceil( count( $auctions )/$cols );
 
 			$columns = array_chunk( $auctions, $auctions_per_col );
 
