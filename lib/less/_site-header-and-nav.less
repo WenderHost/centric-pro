@@ -43,12 +43,16 @@ Top Bar
 
 	.search-form{
 		width: 368px;
-		margin: 5px 8px 0 8px;
+		margin: 0 5px 0 8px;
 		float: right;
+		white-space: nowrap;
+
+		input{
+			display: inline-block;
+		}
 
 		input[name="s"]{
 			padding: 4px;
-			float: left;
 			width: 280px;
 		}
 
@@ -59,7 +63,6 @@ Top Bar
 			padding: 0 12px;
 			margin-left: 6px;
 			width: auto;
-			float: left;
 			font-weight: normal;
 			text-transform: capitalize;
 			background-color: lighten(#000,45%);
