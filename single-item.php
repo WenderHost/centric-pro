@@ -92,9 +92,12 @@ function centric_item_auctioninfo(){
 
 					if( ! empty( $realized ) && is_numeric( $realized ) ){
 						echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1></li>';
-					} else if( 'PASSED' == $realized ){
+					}
+					/*
+					else if( 'PASSED' == $realized ){
 						echo '<li><h1 style="text-align: center;">PASSED</h1></li>';
 					}
+					/**/
 
 					if( ! empty( $meta['auction_id'] ) ){
 						if( ! $lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
