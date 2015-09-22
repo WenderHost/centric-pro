@@ -103,7 +103,6 @@ class CaseAnti_Past_Auctions extends WP_Widget {
 				$column_auctions = $columns[$x];
 				$html = array();
 				foreach( $column_auctions as $auction ){
-					$name = $auction->name;
 					$html[] = '<li><a href="' . $auction['permalink'] . '">' . $auction['name'] . '</a></li>';
 				}
 				$auction_columns[] = sprintf( $format, implode( "\n", $html ) );
