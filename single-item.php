@@ -72,6 +72,7 @@ function centric_item_auctioninfo(){
 		$high_est = get_post_meta( $post->ID, '_high_est', true );
 		$low_est = get_post_meta( $post->ID, '_low_est', true );
 		$realized = get_post_meta( $post->ID, '_realized', true );
+		$lotnum = get_post_meta( $post->ID, '_lotnum', true );
 
 		if( $terms ){
 			foreach( $terms as $term ){
@@ -100,7 +101,8 @@ function centric_item_auctioninfo(){
 					/**/
 
 					if( ! empty( $meta['auction_id'] ) ){
-						if( ! $lotnum ) $lotnum = get_post_meta( $post->ID, '_lotnum', true );
+						if( ! $lotnum )
+							$lotnum = get_post_meta( $post->ID, '_lotnum', true );
 
 						if( 'PASSED' != $realized )
 							echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
@@ -156,8 +158,7 @@ function centric_item_build_crumbs( $crumbs, $args ){
 	$url = parse_url( wp_get_referer() );
 	if( $url['path'] ){
 		preg_match( '/page\/([0-9]+)/', $url['path'], $matches );
-		if( $matches )
-			$page = $matches[1];
+		$page = ( $matches )? $matches[1] : null;
 		$paged = ( $page )? 'page/' . $page . '/' : '';
 		$paged_text = ' &ndash; Page ';
 		$paged_text.= ( $page )? $page : '1';
