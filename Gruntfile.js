@@ -30,7 +30,7 @@ module.exports = function(grunt) {
       },
       styles: {
         files: ['lib/less/**/*.less'], // which files to watch
-        tasks: ['less'],
+        tasks: ['less:development'],
         options: {
           nospawn: true
         }
