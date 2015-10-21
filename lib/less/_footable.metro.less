@@ -132,7 +132,8 @@
   }
 
   // PAGINATION
-  > tfoot .pagination {
+  > tfoot .pagination,
+  > thead .pagination {
     text-align: center;
     ul {
       display: inline-block;
@@ -171,6 +172,14 @@
           }
         }
       }
+    }
+  }
+
+  > thead .th-pagination{
+    padding: 10px 0 0 0;
+
+    .pagination{
+      margin: 0;
     }
   }
 
