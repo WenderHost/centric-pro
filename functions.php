@@ -29,6 +29,15 @@ function centric_load_scripts() {
 	wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700|Spinnaker', array(), CHILD_THEME_VERSION );
 	wp_enqueue_script( 'centric-global', get_bloginfo( 'stylesheet_directory' ) . '/js/global.js', array( 'jquery' ), filemtime( get_stylesheet_directory( '/js/global.js' ) ) , true );
 	wp_enqueue_style( 'centric-pro', get_bloginfo( 'stylesheet_directory' ) . '/lib/css/main.css', array( 'dashicons' ), filemtime( get_stylesheet_directory( '/lib/css/main.css' ) ) );
+
+	if( is_tax( 'auction' ) ){
+		global $wp_query;
+		$value    = get_query_var($wp_query->query_vars['taxonomy']);
+		$current_term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
+		wp_enqueue_script( 'datatables-user' );
+		wp_localize_script( 'datatables-user', 'wpvars', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'auction' => $current_term->term_id ) );
+		wp_enqueue_style( 'datatables' );
+	}
 }
 
 //* Footer Copyright
