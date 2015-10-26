@@ -136,24 +136,56 @@ Plugins
 }
 
 .auction-display-toggle{
-	list-style-type: none;
 	float: right;
+	text-align: right;
+	width: 30%;
+	line-height: 2.25;
 
-	li{
-		float: left;
+	ul{
+		list-style-type: none;
+		float: right;
+		margin-left: 8px;
 
-		a{
-			display: block;
-			padding: 10px 16px;
-			background-color: #eee;
-			border: 1px solid @centric-red;
+		li{
+			float: left;
 
-			&.view-thumbnails{
-				border-radius: 5px 0 0 5px;
-				border-right: 0;
-			}
-			&.view-table{
-				border-radius: 0 5px 5px 0;
+			a{
+				display: block;
+				padding: 3px 8px 0 8px;
+				background-color: #eee;
+				border: 1px solid @centric-red;
+				font-size: 28px;
+				line-height: 1.25;
+
+				&.view-thumbnails{
+					border-radius: 5px 0 0 5px;
+					border-right: 0;
+					display: block;
+
+					&:before{
+						font-family: 'dashicons';
+						content: "\f128";
+					}
+				}
+				&.view-table{
+					border-radius: 0 5px 5px 0;
+					display: block;
+
+					&:before{
+						font-family: 'dashicons';
+						content: '\f163';
+					}
+				}
+				&:hover, &.active{
+					text-decoration: none;
+					color: #fff;
+					background-color: @centric-red
+				}
+
+				&:hover{
+					background-color: lighten(@centric-red,10%);
+				}
+
 			}
 		}
 	}
@@ -180,23 +212,43 @@ Plugins
 		left: 0;
 		right: 0;
 
-		h3{
-			margin: 0;
+		#case-logo{
+			margin: 0 auto;
 			line-height: inherit;
 			background-image: url(../../images/case-antiques.524x66.png);
 			background-size: 262px 33px;
-			background-position: left center;
+			background-position: center;
 			background-repeat: no-repeat;
-			padding-left: 272px;
+			width: 262px;
+			height: 33px;
 			height: 40px;
 			font-weight: 300;
+			text-indent: -9999px;
 		}
 
-		.one-third{
+		.one-third:last-child{
 			text-align: right;
 
 			a.close-auction{
-				color: #fff;
+				color: @centric-red;
+				background-color: #fff;
+				padding: 1px 10px 3px 8px;
+				border-radius: 16px;
+				border: 1px solid #fff;
+
+				&:before{
+					font-family: 'dashicons';
+					content: "\f153";
+					vertical-align: -7%;
+					padding-right: 4px;
+				}
+
+				&:hover{
+					text-decoration: none;
+					color: #fff;
+					background-color: @centric-red;
+					border-color: #fff;
+				}
 			}
 		}
 

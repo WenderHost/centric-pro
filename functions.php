@@ -37,6 +37,7 @@ function centric_load_scripts() {
 		wp_enqueue_script( 'datatables-user' );
 		wp_localize_script( 'datatables-user', 'wpvars', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'auction' => $current_term->term_id ) );
 		wp_enqueue_style( 'datatables' );
+		wp_enqueue_style( 'dashicons' );
 	}
 }
 
