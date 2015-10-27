@@ -56,7 +56,7 @@ function centric_auction_table(){
 	preg_match( '/([0-9]{4})\s([0-9]{2})\s([0-9]{2})/', $auction_name, $matches );
 	if( $matches ){
 		$auction_timestamp = strtotime( $matches[1] . '-' . $matches[2] . '-' .$matches[3] );
-		$auction_date = date( 'D, M j, Y', $auction_timestamp );
+		$auction_date = date( 'l, F j, Y', $auction_timestamp );
 		$auction_name = str_replace( $matches[0], $auction_date, $auction_name );
 	}
 
