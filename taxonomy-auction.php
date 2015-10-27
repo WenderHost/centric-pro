@@ -22,6 +22,23 @@ function centricpro_do_item_image(){
 remove_action( 'genesis_entry_content', 'genesis_do_post_image', 8 );
 remove_action( 'genesis_post_content', 'genesis_do_post_content' );
 remove_action( 'genesis_entry_content', 'genesis_do_post_content' );
+remove_action( 'genesis_before_loop', 'genesis_do_breadcrumbs' );
+
+//* Reformat the auction name and insert it as our breadcrumb
+function centric_auction_breadcrumb(){
+	global $wp_query;
+	$value    = get_query_var($wp_query->query_vars['taxonomy']);
+	$current_term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
+	$auction_name = $current_term->name;
+	preg_match( '/([0-9]{4})\s([0-9]{2})\s([0-9]{2})/', $auction_name, $matches );
+	if( $matches ){
+		$auction_timestamp = strtotime( $matches[1] . '-' . $matches[2] . '-' .$matches[3] );
+		$auction_date = date( 'l, F j, Y', $auction_timestamp );
+		$auction_name = str_replace( $matches[0], $auction_date, $auction_name );
+	}
+	echo '<h3 class="breadcrumb">' . $auction_name . '</h3>';
+}
+add_action( 'genesis_before_loop', 'centric_auction_breadcrumb' );
 
 //* Wrap the loop inside div.genesis-loop
 function centric_before_loop_while(){
