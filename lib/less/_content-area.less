@@ -98,28 +98,36 @@ Content Area
 	text-shadow: 3px 3px rgba( 0, 0, 0, 0.1 );
 }
 
-.arrow {
+.centric-pro-home .color-section .arrow {
 	margin: 0;
 	text-align: center;
 	width: 100%;
-}
 
-.arrow a {
-	background: #fff;
-	border-radius: 30px;
-	display: inline-block;
-	padding: 13px 10px 6px;
-	text-align: center;
-	line-height: 1;
-}
+	a{
+		background: #fff;
+		border-radius: 30px;
+		display: inline-block;
+		padding: 13px 10px 6px;
+		text-align: center;
+		line-height: 1;
 
-.arrow a:before {
-	-webkit-font-smoothing: antialiased;
-	color: #000;
-	content: "\f347";
-	font: normal 40px/1 'dashicons';
-	height: 40px;
-	width: 40px;
+		&:before{
+			-webkit-font-smoothing: antialiased;
+			color: #000;
+			content: "\f347";
+			font: normal 40px/1 'dashicons';
+			height: 40px;
+			width: 40px;
+		}
+		&:hover{
+			text-decoration: none;
+			background-color: rgba(255,255,255,0.3);
+
+			&:before{
+				color: #fff;
+			}
+		}
+	}
 }
 
 .home-widgets-2 {
