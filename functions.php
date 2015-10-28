@@ -31,11 +31,26 @@ function centric_load_scripts() {
 	wp_enqueue_style( 'centric-pro', get_bloginfo( 'stylesheet_directory' ) . '/lib/css/main.css', array( 'dashicons' ), filemtime( get_stylesheet_directory( '/lib/css/main.css' ) ) );
 
 	if( is_tax( 'auction' ) ){
+		wp_enqueue_script( 'datatables-user' );
+
 		global $wp_query;
 		$value    = get_query_var($wp_query->query_vars['taxonomy']);
 		$current_term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
-		wp_enqueue_script( 'datatables-user' );
-		wp_localize_script( 'datatables-user', 'wpvars', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'auction' => $current_term->term_id ) );
+
+		$auction_name = $current_term->name;
+		preg_match( '/([0-9]{4})\s([0-9]{2})\s([0-9]{2})/', $auction_name, $matches );
+		$past = false;
+		if( $matches ){
+			//$auction_timestamp = strtotime( $matches[1] . '-' . $matches[2] . '-' .$matches[3] );
+			$auction_datetime = new DateTime( $matches[1] . '-' . $matches[2] . '-' .$matches[3] );
+			$current_datetime = new DateTime( current_time( 'Y-m-d' ) );
+			$interval = $auction_datetime->diff( $current_datetime );
+			$diff = $interval->format( '%R%a' );
+			if( 0 < $diff )
+				$past = true;
+		}
+
+		wp_localize_script( 'datatables-user', 'wpvars', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'auction' => $current_term->term_id, 'past' => $past ) );
 		wp_enqueue_style( 'datatables' );
 		wp_enqueue_style( 'dashicons' );
 	}
