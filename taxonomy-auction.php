@@ -67,7 +67,6 @@ function centric_auction_table(){
 
 	$filepath = get_stylesheet_directory() . '/lib/includes/auction-table.datatables.html';
 	$auction_table_format = file_get_contents( $filepath );
-	$rows = array();
 
 	$auction_name = $current_term->name;
 	preg_match( '/([0-9]{4})\s([0-9]{2})\s([0-9]{2})/', $auction_name, $matches );
@@ -77,7 +76,7 @@ function centric_auction_table(){
 		$auction_name = str_replace( $matches[0], $auction_date, $auction_name );
 	}
 
-	$table = sprintf( $auction_table_format, implode( "\n",  $rows ), $auction_name );
+	$table = sprintf( $auction_table_format, $auction_name );
 	echo $table;
 }
 add_action( 'genesis_after_endwhile', 'centric_auction_table', 999 );
