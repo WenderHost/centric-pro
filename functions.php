@@ -49,8 +49,8 @@ add_theme_support( 'custom-background' );
 add_theme_support( 'custom-header', array(
 	'header-selector' => '.site-title a',
 	'header-text'     => false,
-	'height'          => 80,
-	'width'           => 360,
+	'height'          => 160,	// 80
+	'width'           => 720,	// 360
 ) );
 
 //* Add support for structural wraps

@@ -152,13 +152,31 @@ Site Header
 	width: 100%;
 }
 
-.site-title {
+.site-title{
 	font-family: 'Spinnaker', sans-serif;
 	font-size: 60px;
 	font-weight: 700;
 	line-height: 1.2;
-}
 
+	.site-header & a{
+		background-size: contain !important;
+	}
+
+	.site-header & a,
+	.site-header & a:hover{
+		color: #fff;
+		letter-spacing: 2px;
+		text-shadow: 3px 3px rgba( 0, 0, 0, 0.1 );
+		text-transform: uppercase;
+	}
+
+	.header-image & > a{
+		float: left;
+		min-height: 80px;
+		width: 100%;
+	}
+}
+/*
 .site-header .site-title a,
 .site-header .site-title a:hover {
 	color: #fff;
@@ -166,12 +184,14 @@ Site Header
 	text-shadow: 3px 3px rgba( 0, 0, 0, 0.1 );
 	text-transform: uppercase;
 }
-
+*/
+/*
 .header-image .site-title > a {
 	float: left;
 	min-height: 80px;
 	width: 100%;
 }
+*/
 
 .site-description {
     height: 0;
