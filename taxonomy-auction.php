@@ -58,7 +58,13 @@ function centric_auction_display_toggle(){
 			<li><a href="#" class="view-table" title="Table View"></a></li>
 		</ul></div>';
 }
-add_action( 'genesis_before_loop', 'centric_auction_display_toggle', 9 );
+add_action( 'genesis_before_loop', 'centric_auction_display_toggle', 11 );
+
+function centric_auction_thumbnails(){
+	$filepath = get_stylesheet_directory() . '/lib/includes/auction-thumbnails.datatables.html';
+	echo file_get_contents( $filepath );
+}
+add_action( 'genesis_before_loop', 'centric_auction_thumbnails', 12 );
 
 function centric_auction_table(){
 	global $wp_query;
@@ -79,16 +85,10 @@ function centric_auction_table(){
 	$table = sprintf( $auction_table_format, $auction_name );
 	echo $table;
 }
-add_action( 'genesis_after_endwhile', 'centric_auction_table', 999 );
+add_action( 'genesis_before_loop', 'centric_auction_table', 13 );
 
 // Reconfigure the standard entry footer
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
-
-// Add search at the top of the page
-// add_action( 'genesis_before_loop', 'centricpro_auction_search', 20 );
-function centricpro_auction_search(){
-?><p>Search will go here.</p><?php
-}
 
 genesis();
 ?>
