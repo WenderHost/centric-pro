@@ -52,6 +52,7 @@ function centric_after_loop_endwhile(){
 }
 add_action( 'genesis_after_endwhile', 'centric_after_loop_endwhile', 998 );
 
+//* Add a thumbnail/table view toggle
 function centric_auction_display_toggle(){
 	echo '<div class="auction-display-toggle">View Options: <ul>
 			<li><a href="#" class="view-thumbnails active" title="Thumbnail View"></a></li>
@@ -60,12 +61,14 @@ function centric_auction_display_toggle(){
 }
 add_action( 'genesis_before_loop', 'centric_auction_display_toggle', 11 );
 
+//* Insert HTML for the thumbnail view
 function centric_auction_thumbnails(){
 	$filepath = get_stylesheet_directory() . '/lib/includes/auction-thumbnails.datatables.html';
 	echo file_get_contents( $filepath );
 }
 add_action( 'genesis_before_loop', 'centric_auction_thumbnails', 12 );
 
+//* Insert HTML for the table view
 function centric_auction_table(){
 	global $wp_query;
 	$value    = get_query_var($wp_query->query_vars['taxonomy']);
