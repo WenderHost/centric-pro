@@ -52,6 +52,15 @@ function centric_after_loop_endwhile(){
 }
 add_action( 'genesis_after_endwhile', 'centric_after_loop_endwhile', 998 );
 
+//* Display the auction's description
+function centric_auction_description(){
+	echo '<div class="auction-description">
+		' . apply_filters( 'the_content', term_description() ) . genesis_do_taxonomy_title_description() . '
+	</div>';
+}
+add_action( 'genesis_before_loop', 'centric_auction_description', 11 );
+remove_action( 'genesis_before_loop', 'genesis_do_taxonomy_title_description', 15 );
+
 //* Add a thumbnail/table view toggle
 function centric_auction_display_toggle(){
 	echo '<div class="auction-display-toggle">View Options: <ul>
@@ -59,14 +68,14 @@ function centric_auction_display_toggle(){
 			<li><a href="#" class="view-table" title="Table View"></a></li>
 		</ul></div>';
 }
-add_action( 'genesis_before_loop', 'centric_auction_display_toggle', 11 );
+add_action( 'genesis_before_loop', 'centric_auction_display_toggle', 12 );
 
 //* Insert HTML for the thumbnail view
 function centric_auction_thumbnails(){
 	$filepath = get_stylesheet_directory() . '/lib/includes/auction-thumbnails.datatables.html';
 	echo file_get_contents( $filepath );
 }
-add_action( 'genesis_before_loop', 'centric_auction_thumbnails', 12 );
+add_action( 'genesis_before_loop', 'centric_auction_thumbnails', 13 );
 
 //* Insert HTML for the table view
 function centric_auction_table(){
@@ -88,7 +97,7 @@ function centric_auction_table(){
 	$table = sprintf( $auction_table_format, $auction_name );
 	echo $table;
 }
-add_action( 'genesis_before_loop', 'centric_auction_table', 13 );
+add_action( 'genesis_before_loop', 'centric_auction_table', 14 );
 
 // Reconfigure the standard entry footer
 remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
