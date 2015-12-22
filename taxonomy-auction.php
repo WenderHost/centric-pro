@@ -98,6 +98,14 @@ function centric_auction_table(){
 		$auction_name = str_replace( $matches[0], $auction_date, $auction_name );
 	}
 
+	//$date_comparison = '<pre>$date = '.$date.'<br />$auction_name = '.$auction_name.'<br />$auction_date = '.$auction_date->format('Y-m-d').'<br/>$todays_date = '.$todays_date->format('Y-m-d').'<br />$date_comparison = ' . $interval->format( '%R%a days' ) . '</pre>';
+
+	// Show Estimated Prices for auctions up to 7 days after their date
+	$file = ( 7 >= $interval->format( '%R%a' ) )? 'auction-table.datatables.estimated.html' : 'auction-table.datatables.html';
+
+	$filepath = get_stylesheet_directory() . '/lib/includes/' . $file ;
+	$auction_table_format = file_get_contents( $filepath );
+
 	$table = sprintf( $auction_table_format, $auction_name );
 	echo $table;
 }
