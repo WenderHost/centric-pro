@@ -83,8 +83,12 @@ function centric_auction_table(){
 	$value    = get_query_var($wp_query->query_vars['taxonomy']);
 	$current_term = get_term_by('slug',$value,$wp_query->query_vars['taxonomy']);
 
-	$filepath = get_stylesheet_directory() . '/lib/includes/auction-table.datatables.html';
-	$auction_table_format = file_get_contents( $filepath );
+	$date = get_metadata( 'auction', $current_term->term_id, 'date', true );
+	if( $date ){
+		$auction_date = new DateTime( $date );
+		$todays_date = new DateTime( current_time( 'mysql' ) );
+		$interval = $auction_date->diff( $todays_date );
+	}
 
 	$auction_name = $current_term->name;
 	preg_match( '/([0-9]{4})\s([0-9]{2})\s([0-9]{2})/', $auction_name, $matches );
