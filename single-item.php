@@ -171,4 +171,39 @@ function centric_item_build_crumbs( $crumbs, $args ){
 	return $crumbs;
 }
 
+/**
+ * Adds `Next` and `Previous` item navigation.
+ *
+ * @since x.x.x
+ *
+ * @return void
+ */
+function centric_item_next_prev_links(){
+?>
+<div class="item-nav-fixed">
+	<?php
+	$prev_post = get_adjacent_post( true, null, true, 'auction' );
+	if( $prev_post ){
+	$thumbnail = AuctionShortcodes::get_gallery_image( $prev_post->ID, true );
+	?>
+	<a class="item-nav previous" href="<?php echo get_permalink( $prev_post->ID ); ?>" title="<?php _e( 'Previous post:', 'centric' ); echo ' ' . esc_attr( get_the_title( $prev_post->ID ) ) ?>">
+		<span class="arrow">&laquo;</span>
+		<span class="preview" style="background-image: url(<?php echo $thumbnail; ?>)"><?php echo get_the_title( $prev_post->ID ) ?></span>
+	</a>
+	<?php
+	}
+	$next_post = get_adjacent_post( true, null, false, 'auction' );
+	if( $next_post ){
+	$thumbnail = AuctionShortcodes::get_gallery_image( $next_post->ID, true );
+	?>
+	<a class="item-nav next" href="<?php echo get_permalink( $next_post->ID ); ?>" title="<?php _e( 'Next post:', 'centric' ); echo ' ' . esc_attr( get_the_title( $next_post->ID ) ) ?>">
+		<span class="arrow">&raquo;</span>
+		<span class="preview" style="background-image: url(<?php echo $thumbnail; ?>)"><?php echo get_the_title( $next_post->ID ) ?></span>
+	</a>
+	<?php } ?>
+</div>
+<?php
+}
+add_action( 'genesis_before_loop', 'centric_item_next_prev_links', 9 );
+
 genesis();
