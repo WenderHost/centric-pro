@@ -187,7 +187,7 @@ function centric_item_next_prev_links(){
 	$thumbnail = AuctionShortcodes::get_gallery_image( $prev_post->ID, true );
 	?>
 	<a class="item-nav previous" href="<?php echo get_permalink( $prev_post->ID ); ?>" title="<?php _e( 'Previous post:', 'centric' ); echo ' ' . esc_attr( get_the_title( $prev_post->ID ) ) ?>">
-		<span class="arrow">&laquo;</span>
+		<span class="arrow">&nbsp;</span>
 		<span class="preview" style="background-image: url(<?php echo $thumbnail; ?>)"><?php echo get_the_title( $prev_post->ID ) ?></span>
 	</a>
 	<?php
@@ -197,7 +197,7 @@ function centric_item_next_prev_links(){
 	$thumbnail = AuctionShortcodes::get_gallery_image( $next_post->ID, true );
 	?>
 	<a class="item-nav next" href="<?php echo get_permalink( $next_post->ID ); ?>" title="<?php _e( 'Next post:', 'centric' ); echo ' ' . esc_attr( get_the_title( $next_post->ID ) ) ?>">
-		<span class="arrow">&raquo;</span>
+		<span class="arrow">&nbsp;</span>
 		<span class="preview" style="background-image: url(<?php echo $thumbnail; ?>)"><?php echo get_the_title( $next_post->ID ) ?></span>
 	</a>
 	<?php } ?>
