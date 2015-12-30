@@ -91,6 +91,91 @@ Media Queries
 
 }
 
+@media only screen and (max-width: 1024px){
+	/* Auction Items
+	--------------------------------------------- */
+	.item-nav-fixed{
+		border-bottom: 1px solid @centric-red;
+		font-weight: bold;
+		margin-bottom: 20px;
+		padding-bottom: 4px;
+		.clearfix;
+
+		span.label{
+			display: inline;
+		}
+
+		span.label:after,
+		span.label:before{
+			-webkit-font-smoothing: antialiased;
+			font: normal 20px/1 'dashicons';
+			color: #fff;
+			background-color: @centric-red;
+			border-radius: 50%;
+			border: 2px solid @centric-red;
+			display: block;
+			width: 24px;
+			height: 24px;
+			margin-top: 3px;
+		}
+
+		a{
+			position: relative;
+			width: 50%;
+			height: auto;
+			margin-top: 0;
+			background-color: transparent;
+
+			&.next{
+				text-align: right;
+				float: right;
+
+				span.label{
+					&:after{
+						content: "\f345";
+						float: right;
+						margin-left: 8px;
+					}
+				}
+
+				&:hover{
+					span.label:after{
+						background-color: #fff;
+						color: @centric-red;
+					}
+				}
+			}
+			&.previous{
+				text-align: left;
+				float: left;
+
+				span.label{
+					&:before{
+						content: "\f341";
+						float: left;
+						margin-right: 8px;
+					}
+				}
+			}
+			&:hover{
+				width: 50%;
+				color: @centric-red;
+
+				span.label:after,
+				span.label:before{
+					background-color: #fff;
+					color: @centric-red;
+				}
+			}
+
+			.arrow,
+			.preview{
+				display: none;
+			}
+		}
+	}
+}
+
 @media only screen and (max-width: 1023px) {
 
 	.auction-table{
@@ -238,89 +323,6 @@ Media Queries
 
 			.widget_text:first-child{
 				padding-bottom: 20px;
-			}
-		}
-	}
-
-	/* Auction Items
-	--------------------------------------------- */
-	.item-nav-fixed{
-		border-bottom: 1px solid @centric-red;
-		font-weight: bold;
-		margin-bottom: 20px;
-		padding-bottom: 4px;
-		.clearfix;
-
-		span.label{
-			display: inline;
-		}
-
-		span.label:after,
-		span.label:before{
-			-webkit-font-smoothing: antialiased;
-			font: normal 20px/1 'dashicons';
-			color: #fff;
-			background-color: @centric-red;
-			border-radius: 50%;
-			border: 2px solid @centric-red;
-			display: block;
-			width: 24px;
-			height: 24px;
-			margin-top: 3px;
-		}
-
-		a{
-			position: relative;
-			width: 50%;
-			height: auto;
-			margin-top: 0;
-			background-color: transparent;
-
-			&.next{
-				text-align: right;
-				float: right;
-
-				span.label{
-					&:after{
-						content: "\f345";
-						float: right;
-						margin-left: 8px;
-					}
-				}
-
-				&:hover{
-					span.label:after{
-						background-color: #fff;
-						color: @centric-red;
-					}
-				}
-			}
-			&.previous{
-				text-align: left;
-				float: left;
-
-				span.label{
-					&:before{
-						content: "\f341";
-						float: left;
-						margin-right: 8px;
-					}
-				}
-			}
-			&:hover{
-				width: 50%;
-				color: @centric-red;
-
-				span.label:after,
-				span.label:before{
-					background-color: #fff;
-					color: @centric-red;
-				}
-			}
-
-			.arrow,
-			.preview{
-				display: none;
 			}
 		}
 	}
