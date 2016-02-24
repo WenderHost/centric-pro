@@ -92,7 +92,7 @@ function centric_item_auctioninfo() {
 				}
 
 				if ( ! empty( $realized ) && is_numeric( $realized ) ) {
-					echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1></li>';
+					echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1><p class="note">(Note: Prices realized include a buyer\'s premium.)</p></li>';
 				}
 				/*
 					else if( 'PASSED' == $realized ){
