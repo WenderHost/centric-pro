@@ -91,26 +91,26 @@ function centric_item_auctioninfo() {
 					$link_text = 'View Final Price';
 				}
 
+				// Display Realized Price
 				if ( ! empty( $realized ) && is_numeric( $realized ) ) {
 					echo '<li><h1 style="text-align: center;">SOLD! <span style="font-weight: normal">for ' . AuctionShortcodes::format_price( $realized ) . '.</span></h1><p class="note">(Note: Prices realized include a buyer\'s premium.)</p></li>';
 				}
-				/*
-					else if( 'PASSED' == $realized ){
-						echo '<li><h1 style="text-align: center;">PASSED</h1></li>';
-					}
-					/**/
 
-				if ( ! empty( $meta['auction_id'] ) ) {
-					if ( ! $lotnum )
-						$lotnum = get_post_meta( $post->ID, '_lotnum', true );
-
-					if ( 'PASSED' != $realized )
-						echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'">'.$link_text.'</a></li>';
+				// BID NOW: Live Auctioneers
+				if ( ! empty( $meta['auction_id'] ) && 'PASSED' != $realized && $lotnum = get_post_meta( $post->ID, '_lotnum', true ) ) {
+					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
 				}
-				if ( null != get_post_meta( $post->ID, '_igavel_lotnum', true ) ) {
-					$igavel_lotnum = get_post_meta( $post->ID, '_igavel_lotnum', true );
+
+				// BID NOW: iGavel
+				if ( $igavel_lotnum = get_post_meta( $post->ID, '_igavel_lotnum', true ) ) {
 					$igavel_item_url = 'http://bid.igavelauctions.com/Bidding.taf?_function=detail&Auction_uid1=' . $igavel_lotnum;
-					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $igavel_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on iGavel">' . $link_text . '</a></li>';
+					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $igavel_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on iGavel">' . $link_text . ' on iGavel</a></li>';
+				}
+
+				// BID NOW: Bidsquare.com
+				if ( ! empty( $meta['bidsquare_id'] ) && $bidsquare_lotnum = get_post_meta( $post->ID, '_bidsquare_lotnum', true ) ) {
+					$bidsquare_item_url = 'http://auctions.bidsquare.com/view-auctions/catalog/id/' . $meta['bidsquare_id'] . '/lot/' . $bidsquare_lotnum;
+					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $bidsquare_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on Bidsquare">' . $link_text . ' on Bidsquare</a></li>';
 				}
 			}
 		}
