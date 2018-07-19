@@ -109,8 +109,13 @@ Site Header
 	top: 0;
 	width: 100%;
 	z-index: 999;
-}
 
+	.wrap{
+		min-height: 120px;
+		padding: 30px;
+		max-width: 100%;
+	}
+}
 
 .admin-bar{
 	.site-header{
@@ -118,17 +123,8 @@ Site Header
 	}
 }
 
-.site-header .wrap {
-	min-height: 160px;
-}
-
 .bumper {
 	min-height: @bumper_h;
-}
-
-.site-header .wrap {
-	padding: 40px;
-	max-width: 100%;
 }
 
 .site-header,
@@ -145,7 +141,7 @@ Site Header
 .title-area {
 	float: left;
 	padding: 0;
-	width: 360px;
+	width: 300px;
 }
 
 .header-full-width .title-area {
@@ -160,6 +156,7 @@ Site Header
 
 	.site-header & a{
 		background-size: contain !important;
+		background-position: center !important;
 	}
 
 	.site-header & a,
@@ -218,7 +215,15 @@ Site Header
 	text-align: right;
 	padding-top: 10px;
 	margin-top: 4px;
-	width: 540px;
+	width: 700px;
+
+	@media (min-width : 1024px) and (max-width : 1060px) {
+		width: 660px;
+
+		& .genesis-nav-menu li a{
+			padding: 18px 15px;
+		}
+	}
 }
 
 .site-header .widget-area a,
@@ -283,6 +288,7 @@ Site Navigation
 .genesis-nav-menu .current-menu-item > a {
 	background-color: rgba(255, 255, 255, 0.1);
 	color: #fff;
+	text-decoration: none;
 }
 
 .genesis-nav-menu .sub-menu {
