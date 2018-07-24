@@ -242,6 +242,12 @@ Plugins
 			text-indent: -9999px;
 		}
 
+		.one-third.first{
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+		}
+
 		.one-third:last-child{
 			text-align: right;
 
@@ -276,14 +282,7 @@ Plugins
 	}
 
 	.dataTables_wrapper{
-		.dataTables_paginate{
-			/*
-			width: 50%;
-			margin-top: -10px;
-			float: left;
-			text-align: center;
-			*/
-		}
+
 		.dataTables_info{
 			clear: left;
 			width: 50%;
@@ -299,32 +298,34 @@ Plugins
 			width: 35%;
 			text-align: left;
 		}
+
 		.dataTables_processing{
-	        position: fixed;
-	        top: 0;
-	        left: 0;
-	        width: 100%;
-	        height: 100%;
-	        margin-left: 0;
-	        margin-top: 0;
-	        padding: 1% 0 2px 0;
-	        text-align: center;
-	        color: #fff;
-	        font-size: 42px;
-	        line-height: 66px;
-	        background-color: rgba(0,0,0,0.8);
+      position: absolute;
+      top: 100px;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin-left: 0;
+      margin-top: 0;
+      padding: 1% 0 2px 0;
+      text-align: center;
+      color: #fff;
+      font-size: 42px;
+      line-height: 66px;
+      background-color: rgba(0,0,0,0.8);
 			background-image: none;
-			z-index: 9999;
+			z-index: 998;
 
 			.dataTables_processing_text{
 				position: absolute;
-				top: 50%;
-				margin-top: -0.5em;
+				top: 10%;
 				overflow: hidden;
 				white-space: nowrap;
 				width: 100%;
 			}
 		}
+		/**/
+
 		.filter_button{
 			box-sizing: border-box;
 			display: inline-block;
@@ -334,10 +335,22 @@ Plugins
 			text-align: center;
 			text-decoration: none !important;
 			cursor: pointer;
-			*cursor: hand;
 			color: #333 !important;
 			border: 1px solid transparent;
 			border-radius: 2px;
+
+			&.noresults{
+				padding: .0em .5em;
+		    background: #fff;
+		    font-weight: 600;
+		    font-size: 28px;
+		    border: 3px double;
+		    line-height: 1.8;
+
+		    &:hover{
+		    	border: 3px double #111;
+		    }
+			}
 
 			&:hover{
 				color: white !important;
