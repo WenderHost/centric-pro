@@ -26,7 +26,7 @@ add_action( 'genesis_meta', 'centric_home_genesis_meta' );
  */
 function centric_home_genesis_meta() {
 
-	if ( is_active_sidebar( 'home-widgets-1' ) || is_active_sidebar( 'home-widgets-2' ) || is_active_sidebar( 'home-widgets-3' ) || is_active_sidebar( 'home-widgets-4' ) || is_active_sidebar( 'home-widgets-5' ) || is_active_sidebar( 'home-widgets-6' ) ) {
+	if ( is_active_sidebar( 'home-widgets-1' ) || is_active_sidebar( 'home-widgets-2' ) || is_active_sidebar( 'home-widgets-3' ) || is_active_sidebar( 'home-widgets-4' ) || is_active_sidebar( 'home-widgets-5' ) || is_active_sidebar( 'home-widgets-6' ) || is_active_sidebar( 'home-widgets-7' ) ) {
 
 		//* Force full width content layout
 		add_filter( 'genesis_pre_get_option_site_layout', '__genesis_return_full_width_content' );
@@ -91,6 +91,11 @@ function centric_home_widgets() {
 
 	genesis_widget_area( 'home-widgets-6', array(
 		'before' => '<div class="home-widgets-6 color-section widget-area">',
+		'after'  => '</div>',
+	) );
+
+	genesis_widget_area( 'home-widgets-7', array(
+		'before' => '<div class="home-widgets-7 widget-area">',
 		'after'  => '</div>',
 	) );
 

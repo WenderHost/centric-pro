@@ -46,3 +46,8 @@ genesis_register_sidebar( array(
   'name'        => __( 'Home 6', 'centric' ),
   'description' => __( 'This is the sixth section of the home page.', 'centric' ),
 ) );
+genesis_register_sidebar( array(
+  'id'          => 'home-widgets-7',
+  'name'        => __( 'Home 7', 'centric' ),
+  'description' => __( 'This is the seventh section of the home page.', 'centric' ),
+) );
