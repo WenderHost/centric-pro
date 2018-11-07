@@ -5,6 +5,21 @@ Content Area
 /* Home Page
 --------------------------------------------- */
 .home-widgets{
+	.widget-area{
+		background-color: #fff;
+
+		&.color-section{
+			background-color: @primarycolor;
+		}
+		&.dark-section{
+			background-color: @darkcolor;
+
+			a:hover{
+				color: #fff;
+			}
+		}
+	}
+
 	.widget {
 		clear: both;
 		margin: 0 auto;
@@ -204,68 +219,71 @@ Content Area
 	margin-left: 0;
 }
 
+/* Pricing Table
+--------------------------------------------- */
+
 .pricing-table {
 	color: #2e2f33;
 	line-height: 1;
 	text-align: center;
-}
 
-.pricing-table .one-third {
-	background-color: #fff;
-	border: 2px solid #000;
-	margin: 0 -2px;
-	padding: 40px;
-}
+	.one-third {
+		background-color: #fff;
+		border: 2px solid #000;
+		margin: 0 -2px;
+		padding: 40px;
 
-.pricing-table .one-third:nth-child(3n+1) {
-	clear: both;
-	margin: 20px 0 20px 2.564102564102564%;
-}
+		&:nth-child(3n+1) {
+			clear: both;
+			margin: 20px 0 20px 2.564102564102564%;
+		}
 
-.pricing-table .one-third:nth-child(3n+3) {
-	margin: 20px 2.564102564102564% 20px 0;
-}
+		&:nth-child(3n+3) {
+			margin: 20px 2.564102564102564% 20px 0;
+		}
+	}
 
-.pricing-table .price-heading {
-	border-bottom: 2px solid #2e2f33;
-	margin: -40px -40px 40px;
-	padding: 40px;
-}
+	.price-heading {
+		border-bottom: 2px solid #2e2f33;
+		margin: -40px -40px 40px;
+		padding: 40px;
+	}
 
-.pricing-table .price-title {
-	font-weight: 300;
-	letter-spacing: 2px;
-	text-transform: uppercase;
-}
+	.price-title {
+		font-weight: 300;
+		letter-spacing: 2px;
+		text-transform: uppercase;
+	}
 
-.pricing-table .price {
-	text-transform: uppercase;
-}
+	.price {
+		text-transform: uppercase;
+	}
 
-.pricing-table .amt {
-	font-size: 80px;
-	line-height: 0.8;
-}
+	.amt {
+		font-size: 80px;
+		line-height: 0.8;
+	}
 
-.pricing-table .sup {
-	vertical-align: top;
-	font-weight: 700;
-}
+	.sup {
+		vertical-align: top;
+		font-weight: 700;
+	}
 
-.pricing-table .sub {
-	vertical-align: bottom;
-	letter-spacing: 2px;
-	font-weight: 700;
-}
+	.sub {
+		vertical-align: bottom;
+		letter-spacing: 2px;
+		font-weight: 700;
+	}
 
-.pricing-table ul {
-	margin-bottom: 30px;
-}
+	ul {
+		margin-bottom: 30px;
 
-.pricing-table li {
-	border-bottom: 1px solid #e5e5e5;
-	margin-bottom: 10px;
-	padding-bottom: 10px;
+		li {
+			border-bottom: 1px solid #e5e5e5;
+			margin-bottom: 10px;
+			padding-bottom: 10px;
+		}
+	}
 }
 
 /* Auction Taxonomy
