@@ -124,13 +124,8 @@ function centric_item_auctioninfo() {
         For more information on this or any other item, email
         us at: <a href="mailto:info@caseantiques.com?subject=Case%20Antiques%20Inquiry:%20<?php echo esc_attr( str_replace( ' ', '%20', get_the_title( $post->ID ) ) ) ?>">info@caseantiques.com</a></li>
         <li><strong>Share this:</strong><br />
-        	<span class="st_facebook" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="Facebook"></span>
-        	<span class="st_twitter" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="Twitter"></span>
-        	<span class="st_pinterest" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="Pinterest"></span>
-        	<span class="st_plusone" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="Google+"></span>
-        	<span class="st_email" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="Email"></span>
-        	<span class="st_sharethis" st_title="<?php the_title(); ?>" st_url="<?php the_permalink(); ?>" displayText="sharethis"></span>
-		<script type="text/javascript">var switchTo5x=true;</script><script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script><script type="text/javascript">stLight.options({publisher:'wp.0d3e1902-6506-4b74-84aa-2bb87fc215f9'});var st_type='wordpress3.0.1';</script></li>
+        	<div class="sharethis-inline-share-buttons"></div>
+			</li>
 		</ul>
     </div>
 	<?php
