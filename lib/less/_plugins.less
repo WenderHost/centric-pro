@@ -435,6 +435,73 @@ Plugins
 	}
 }
 
+/* Echo Knowledge Base
+--------------------------------------------- */
+body.single-epkb_post_type_1,
+body.tax-epkb_post_type_1_category,
+body.page-knowledge-base{
+	.site-inner{
+		padding-top: 110px;
+	}
+}
+body.page-knowledge-base{
+	.bumper,
+	.page-title{
+		display: none;
+	}
+}
+.eckb-kb-template{
+	.eckb_main_title{
+		max-width: 100%;
+		text-align: center;
+	}
+}
+.eckb-article-posted-on,
+.eckb-article-byline{
+	display: none !important;
+}
+.eckb-category-breadcrumbs{
+	font-size: 14px;
+
+	.eckb-breadcrumb-label{
+		float: left;
+		margin-right: 10px !important;
+	}
+	ul.eckb-breadcrumb-nav{
+		float: left !important;
+		padding: 0 !important;
+
+		/*
+		li > .eckb-breadcrumb-link-icon:last-of-type{
+			display: none !important;
+		}
+		*/
+
+		li{
+			float: left;
+			display: block;
+			padding-right: 10px !important;
+
+			&:nth-last-of-type(2){
+				.eckb-breadcrumb-link-icon{
+					display: none !important;
+				}
+			}
+
+			.eckb-breadcrumb-link-icon{
+				font-size: .6em !important;
+				line-height: 2em !important;
+				display: inline-block !important;
+				vertical-align: middle !important;
+				margin-left: 6px !important;
+			}
+		}
+	}
+}
+#eckb-categories-archive-container .eckb-category-archive-style-2 .eckb-category-archive-header{
+	padding-bottom: 40px;
+}
+
 /* Genesis eNews Extended
 --------------------------------------------- */
 

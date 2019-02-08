@@ -34,6 +34,24 @@ function centric_post_title() {
 
 }
 
+function centric_body_classes( $classes ){
+  global $post;
+  if( isset( $post ) ){
+    $classes[] = $post->post_type . '-' . $post->post_name;
+  }
+  return $classes;
+}
+add_filter( 'body_class', 'centric_body_classes' );
+
+function centric_attributes_header( $attributes ){
+  global $post;
+  $post_type = get_post_type();
+  if( $post_type = 'epkb_post_type_1' || 'knowledge-base' == $post->post_name )
+    $attributes['class'] = 'site-header shrink';
+  return $attributes;
+}
+add_filter( 'genesis_attr_site-header', 'centric_attributes_header' );
+
 function centric_open_post_title() {
   echo '<div class="page-title"><div class="wrap">';
 }
