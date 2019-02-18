@@ -193,6 +193,12 @@ class CaseAnti_Item_Categories_and_Tags extends WP_Widget {
     if( is_wp_error( $term ) || ! is_object( $term ) )
       return;
 
+    if( function_exists( 'get_field') ){
+      $thumbnail = get_field( 'thumbnail', $term );
+      if( $thumbnail )
+        return [ 'thumbnail_url' => $thumbnail['url'], 'title' => $term->name ];
+    }
+
     $args = [
       'post_type' => 'item',
       'orderby' => 'meta_value_num',

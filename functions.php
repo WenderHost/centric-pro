@@ -17,6 +17,7 @@ define( 'CHILD_THEME_VERSION', '1.1' );
 include_once( get_stylesheet_directory() . '/lib/widgets/widgets.php' );
 
 /* Includes */
+require_once( get_stylesheet_directory() . '/lib/includes/acf.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/breadcrumbs.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/comments.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/enqueues.php' );
