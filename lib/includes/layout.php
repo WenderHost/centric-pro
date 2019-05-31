@@ -44,10 +44,10 @@ function centric_body_classes( $classes ){
 add_filter( 'body_class', 'centric_body_classes' );
 
 function centric_attributes_header( $attributes ){
-  global $post;
-  $post_type = get_post_type();
-  if( $post_type = 'epkb_post_type_1' || 'knowledge-base' == $post->post_name )
-    $attributes['class'] = 'site-header shrink';
+  //global $post;
+  //$post_type = get_post_type();
+  //if( $post_type = 'epkb_post_type_1' || 'knowledge-base' == $post->post_name )
+  $attributes['class'] = 'site-header';
   return $attributes;
 }
 add_filter( 'genesis_attr_site-header', 'centric_attributes_header' );

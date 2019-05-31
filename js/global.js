@@ -1,5 +1,5 @@
 jQuery(function( $ ){
-
+  /*
   if( ! $('body').hasClass('single-epkb_post_type_1') && ! $('body').hasClass('tax-epkb_post_type_1_category') && ! $('body').hasClass('page-knowledge-base') ){
     $(".site-header").after('<div class="bumper"></div>');
   	$(window).scroll(function () {
@@ -10,6 +10,7 @@ jQuery(function( $ ){
   	  }
   	});
   }
+  /**/
 
     $("header .genesis-nav-menu").addClass("responsive-menu").before('<div id="responsive-menu-icon"></div>');
 

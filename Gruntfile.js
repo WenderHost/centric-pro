@@ -17,6 +17,22 @@ module.exports = function(grunt) {
           'lib/css/main.css': 'lib/less/main.less'
         }
       },
+      develementor: {
+        options: {
+          compress: false,
+          yuicompress: false,
+          optimization: 2,
+          sourceMap: true,
+          sourceMapFilename: 'lib/css/elementor.css.map',
+          sourceMapBasepath: 'lib/less',
+          sourceMapURL: 'elementor.css.map'
+          //sourceMapRootpath: '../../lib/less'
+        },
+        files: {
+          // target.css file: source.less file
+          'lib/css/elementor.css': 'lib/less/elementor.less'
+        }
+      },
       production: {
         options: {
           compress: true,
@@ -25,7 +41,8 @@ module.exports = function(grunt) {
         },
         files: {
           // target.css file: source.less file
-          'lib/css/main.css': 'lib/less/main.less'
+          'lib/css/main.css': 'lib/less/main.less',
+          'lib/css/elementor.css': 'lib/less/elementor.less'
         }
       },
     },
@@ -35,7 +52,7 @@ module.exports = function(grunt) {
       },
       styles: {
         files: ['lib/less/**/*.less','js/**/*.js'], // which files to watch
-        tasks: ['less:development'],
+        tasks: ['less:development','less:develementor'],
         options: {
           nospawn: true
         }
@@ -45,7 +62,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.registerTask('builddev', ['less:development']);
+  grunt.registerTask('builddev', ['less:development','less:develementor']);
   grunt.registerTask('build', ['less:production']);
   grunt.registerTask('default', ['watch']);
 };
