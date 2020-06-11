@@ -97,8 +97,15 @@ function centric_item_auctioninfo() {
 				}
 
 				// BID NOW: Live Auctioneers
-				if ( ! empty( $meta['auction_id'] ) && 'PASSED' != $realized && $lotnum = get_post_meta( $post->ID, '_lotnum', true ) ) {
-					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$meta['auction_id'].'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+				$liveAuctioneersId = false;
+				$itemLiveAuctioneersId = get_post_meta( $post->ID, '_liveauctioneers_id', true );
+				if( ! empty( $itemLiveAuctioneersId ) && is_numeric( $itemLiveAuctioneersId ) ){
+					$liveAuctioneersId = $itemLiveAuctioneersId;
+				} else if( ! empty( $meta['auction_id'] ) ){
+					$liveAuctioneersId = $meta['auction_id'];
+				}
+				if ( $liveAuctioneersId && 'PASSED' != $realized && $lotnum ) {
+					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
 				}
 
 				// BID NOW: iGavel

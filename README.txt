@@ -29,10 +29,13 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
-= 1.0.1 =
+= 1.1.2 =
+* Updating `single-item.php` template to support Live Auctioneer IDs supplied via the Item's meta data.
+
+= 1.1.1 =
 * Add theme setting defaults
 
-= 1.1 =
+= 1.1.0 =
 * Update theme setting defaults
 * Use theme supports for after entry widget
 * HTML5 Galleries
