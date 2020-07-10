@@ -26,7 +26,7 @@ add_filter('acf/settings/save_json', __NAMESPACE__ . '\\acf_json_save_point');
  */
 function acf_json_load_point( $paths ) {
     // remove original path (optional)
-    unset($paths[0]);
+    //unset($paths[0]);
 
     // append path
     $paths[] = get_stylesheet_directory() . '/lib/acf-json';
