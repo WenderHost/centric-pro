@@ -29,6 +29,11 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.1.3 =
+* Refactoring responsive images filter to not use deprecated `create_function()`.
+* Allowing multiple ACF JSON load points.
+* Removing Gravity Forms auth-only filter in favor of another plugin.
+
 = 1.1.2 =
 * Updating `single-item.php` template to support Live Auctioneer IDs supplied via the Item's meta data.
 
