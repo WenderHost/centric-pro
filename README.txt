@@ -29,6 +29,9 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.2.0 =
+* Updating gallery images to work with [Featherlight](https://github.com/noelboss/featherlight).
+
 = 1.1.3 =
 * Refactoring responsive images filter to not use deprecated `create_function()`.
 * Allowing multiple ACF JSON load points.

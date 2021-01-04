@@ -46,7 +46,7 @@ function centric_item_attachments() {
 				'alt' => esc_attr( $parent_title ),
 			);
 
-			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image" data-target="flare" data-flare-scale="fitmax" data-flare-gallery="gallery1" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large', false, $atts ) . '</a>';
+			$gallery_images[] = '<a href="' . $fullsize[0] . '" class="image gallery" data-flare-thumb="' . $thumbnail[0] . '">' . wp_get_attachment_image( $attachment_id, 'large', false, $atts ) . '</a>';
 		}
 		echo '<div class="item-gallery">' . implode( "\n", $gallery_images ) . '</div>';
 	}
