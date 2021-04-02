@@ -1,0 +1,103 @@
+{
+    "key": "group_60675be12aaf6",
+    "title": "Auction Settings",
+    "fields": [
+        {
+            "key": "field_60675c5923752",
+            "label": "Date",
+            "name": "date",
+            "type": "date_picker",
+            "instructions": "Select the date of this auction.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "m\/d\/Y",
+            "return_format": "m\/d\/Y",
+            "first_day": 0
+        },
+        {
+            "key": "field_60675c7123753",
+            "label": "Display realized prices?",
+            "name": "show_realized",
+            "type": "checkbox",
+            "instructions": "Show the <em>Realized Prices<\/em> column instead of the <em>Low\/High Estimate<\/em> columns when viewing this auction's table view?",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Yes"
+            },
+            "allow_custom": 0,
+            "default_value": [],
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value",
+            "save_custom": 0
+        },
+        {
+            "key": "field_60675cd023754",
+            "label": "Live Auctioneers Auction ID",
+            "name": "auction_id",
+            "type": "text",
+            "instructions": "Add the Live Auctioneers Auction ID to display <strong>Bid Now<\/strong> and <strong>Sold Price<\/strong> links next to each item in this auction.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
+            "key": "field_60675cf723755",
+            "label": "Bidsquare Auction ID",
+            "name": "bidsquare_id",
+            "type": "text",
+            "instructions": "Add the BidSquare Auction ID to display <strong>Bid Now<\/strong> and <strong>Sold Price<\/strong> links next to each item in this auction.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "auction"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "json_save_path": "",
+    "modified": 1617386915
+}
