@@ -29,6 +29,10 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.3.0 =
+* Adding ACF Auction Taxonomy fields.
+* Updating `single-item.php` to reference ACF Auction Taxonomy fields.
+
 = 1.2.0 =
 * Updating gallery images to work with [Featherlight](https://github.com/noelboss/featherlight).
 

@@ -77,12 +77,31 @@ function centric_item_auctioninfo() {
 	if ( $terms ) {
 		foreach ( $terms as $term ) {
 			if ( $term->taxonomy == 'auction' ) {
-				$meta = get_metadata( 'auction', $term->term_id, 'meta', true );
 				$button_classes = array( 'button' );
 
-				$auction_timestamp = strtotime( get_metadata( 'auction', $term->term_id, 'date', true ) );
-				$current_timestamp = strtotime( date( 'Y-m-d', current_time( 'timestamp' ) ) );
-				if ( $current_timestamp < $auction_timestamp ) {
+				// ACF meta data
+				/*
+				$auction_meta = [
+					'date'					=> get_metadata( 'auction', $term->term_id, 'date', true ),
+					'show_realized'	=> get_metadata( 'auction', $term->term_id, 'show_realized', true ),
+					'auction_id'		=> get_metadata( 'auction', $term->term_id, 'auction_id', true ),
+					'bidsquare_id'	=> get_metadata( 'auction', $term->term_id, 'bidsquare_id', true ),
+				];
+				*/
+				$show_realized = get_field( 'show_realized', $term );
+				$show_realized = ( is_array( $show_realized ) && ! empty( $show_realized ) )? $show_realized[0] : false ;
+
+				$auction_meta = [
+					'date'					=> get_field( 'date', $term ),
+					'show_realized'	=> $show_realized,
+					'auction_id'		=> get_field( 'auction_id', $term ),
+					'bidsquare_id'	=> get_field( 'bidsquare_id', $term ),
+				];
+				//echo '<li><pre>' . print_r( $auction_meta, true ) . '</pre></li>';
+				$auction_timestamp = ( ! is_null( $auction_meta['date'] ) )? strtotime( $auction_meta['date'] ) : null ;
+				//$current_timestamp = strtotime( date( 'Y-m-d', current_time( 'timestamp' ) ) );
+				$current_timestamp = current_time( 'timestamp' );
+				if ( is_null( $auction_timestamp ) || $current_timestamp < $auction_timestamp ) {
 					$link_text = 'Bid Now';
 					$button_classes[] = 'green';
 				} else {
@@ -90,6 +109,7 @@ function centric_item_auctioninfo() {
 						$realized = 'PASSED';
 					$link_text = 'View Final Price';
 				}
+				// END ACF meta data
 
 				// Display Realized Price
 				if ( ! empty( $realized ) && is_numeric( $realized ) ) {
@@ -101,8 +121,8 @@ function centric_item_auctioninfo() {
 				$itemLiveAuctioneersId = get_post_meta( $post->ID, '_liveauctioneers_id', true );
 				if( ! empty( $itemLiveAuctioneersId ) && is_numeric( $itemLiveAuctioneersId ) ){
 					$liveAuctioneersId = $itemLiveAuctioneersId;
-				} else if( ! empty( $meta['auction_id'] ) ){
-					$liveAuctioneersId = $meta['auction_id'];
+				} else if( ! empty( $auction_meta['auction_id'] ) ){
+					$liveAuctioneersId = $auction_meta['auction_id'];
 				}
 				if ( $liveAuctioneersId && 'PASSED' != $realized && $lotnum ) {
 					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
@@ -115,8 +135,8 @@ function centric_item_auctioninfo() {
 				}
 
 				// BID NOW: Bidsquare.com
-				if ( ! empty( $meta['bidsquare_id'] ) && $bidsquare_lotnum = get_post_meta( $post->ID, '_bidsquare_lotnum', true ) ) {
-					$bidsquare_item_url = 'http://auctions.bidsquare.com/view-auctions/catalog/id/' . $meta['bidsquare_id'] . '/lot/' . $bidsquare_lotnum;
+				if ( ! empty( $auction_meta['bidsquare_id'] ) && $bidsquare_lotnum = get_post_meta( $post->ID, '_bidsquare_lotnum', true ) ) {
+					$bidsquare_item_url = 'http://auctions.bidsquare.com/view-auctions/catalog/id/' . $auction_meta['bidsquare_id'] . '/lot/' . $bidsquare_lotnum;
 					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $bidsquare_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on Bidsquare">' . $link_text . ' on Bidsquare</a></li>';
 				}
 			}
