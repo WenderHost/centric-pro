@@ -124,8 +124,20 @@ function centric_item_auctioninfo() {
 				} else if( ! empty( $auction_meta['auction_id'] ) ){
 					$liveAuctioneersId = $auction_meta['auction_id'];
 				}
-				if ( $liveAuctioneersId && 'PASSED' != $realized && $lotnum ) {
-					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+
+				switch( $link_text ){
+					case 'Bid Now':
+						// Display LiveAuctioneers link
+						echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+						break;
+
+					case 'View Final Price':
+						if( 'PASSED' != $realized && $lotnum ){
+							echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+						} else {
+							echo '<li><p style="margin-bottom: 12px;">If you have items like this you wish to consign, click here for more information:</p><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="https://caseantiques.com/selling/" title="Selling with Case Antiques">Selling with Case</a></li>';
+						}
+						break;
 				}
 
 				// BID NOW: iGavel
