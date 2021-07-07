@@ -29,6 +29,9 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.3.1 =
+* Removing "More Info" link for single items.
+
 = 1.3.0 =
 * Adding ACF Auction Taxonomy fields.
 * Updating `single-item.php` to reference ACF Auction Taxonomy fields.

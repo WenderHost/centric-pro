@@ -163,9 +163,6 @@ function centric_item_auctioninfo() {
 	if ( !empty( $high_est ) ) echo '<li><strong>High Estimate:</strong> '.AuctionShortcodes::format_price( $high_est ). '</li>';
 	if ( ! empty( $realized ) && is_numeric( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">'.AuctionShortcodes::format_price( $realized ). '</span></li>';
 ?>
-		<li><strong>More Information:</strong><br />
-        For more information on this or any other item, email
-        us at: <a href="mailto:info@caseantiques.com?subject=Case%20Antiques%20Inquiry:%20<?php echo esc_attr( str_replace( ' ', '%20', get_the_title( $post->ID ) ) ) ?>">info@caseantiques.com</a></li>
         <li><strong>Share this:</strong><br />
         	<div class="sharethis-inline-share-buttons"></div>
 			</li>
