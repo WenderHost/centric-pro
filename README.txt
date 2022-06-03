@@ -29,6 +29,11 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.3.2 =
+* Checking for `display_bid_now_button` in `single-item.php`.
+* Adding "Display 'Bid Now' Button" option to Auction taxonomies.
+* Adding check for `_item_number` to `single-item.php` in prepartion for utilizing Sirv image hosting.
+
 = 1.3.1 =
 * Removing "More Info" link for single items.
 

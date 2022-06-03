@@ -43,6 +43,30 @@
             "save_custom": 0
         },
         {
+            "key": "field_629a5e150b09e",
+            "label": "Display \"BID NOW\" button?",
+            "name": "display_bid_now_button",
+            "type": "radio",
+            "instructions": "Should we display the Live Auctioneers or Bidsquare \"BID NOW\" buttons for items in this auction? We typically turn off the BID NOW button when we have published an auction on our website but it is yet to be live on other third party sites.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "1": "Yes",
+                "0": "No"
+            },
+            "allow_null": 0,
+            "other_choice": 0,
+            "default_value": 1,
+            "layout": "horizontal",
+            "return_format": "value",
+            "save_other_choice": 0
+        },
+        {
             "key": "field_60675cd023754",
             "label": "Live Auctioneers Auction ID",
             "name": "auction_id",
@@ -99,5 +123,5 @@
     "active": 1,
     "description": "",
     "json_save_path": "",
-    "modified": 1617386915
+    "modified": 1654284772
 }
