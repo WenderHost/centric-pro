@@ -29,6 +29,9 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.3.3 =
+* Adding compiled CSS to repo (i.e. `lib/css/`).
+
 = 1.3.2 =
 * Checking for `display_bid_now_button` in `single-item.php`.
 * Adding "Display 'Bid Now' Button" option to Auction taxonomies.
