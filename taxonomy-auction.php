@@ -107,7 +107,7 @@ function centric_auction_table() {
 	$filepath = get_stylesheet_directory() . '/lib/includes/' . $file ;
 	$auction_table_format = file_get_contents( $filepath );
 
-	$table = sprintf( $auction_table_format, $auction_name );
+	$table = str_replace( '{{title}}', $auction_name, $auction_table_format );
 
 	echo $table;
 }

@@ -29,6 +29,9 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.3.4 =
+* Replacing call to `sprintf` with `str_replace` in `centric_auction_table()` due to a parsing error.
+
 = 1.3.3 =
 * Adding compiled CSS to repo (i.e. `lib/css/`).
 
