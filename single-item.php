@@ -77,6 +77,7 @@ function centric_item_auctioninfo() {
 	$low_est = get_post_meta( $post->ID, '_low_est', true );
 	$realized = get_post_meta( $post->ID, '_realized', true );
 	$lotnum = get_post_meta( $post->ID, '_lotnum', true );
+	$lot_bidding_url = get_post_meta( $post->ID, '_lot_bidding_url', true );
 
 	if ( $terms ) {
 		foreach ( $terms as $term ) {
@@ -96,10 +97,10 @@ function centric_item_auctioninfo() {
 				$show_realized = ( is_array( $show_realized ) && ! empty( $show_realized ) )? $show_realized[0] : false ;
 
 				$auction_meta = [
-					'date'					=> get_field( 'date', $term ),
-					'show_realized'	=> $show_realized,
+					'date'				=> get_field( 'date', $term ),
+					'show_realized'		=> $show_realized,
 					'auction_id'		=> get_field( 'auction_id', $term ),
-					'bidsquare_id'	=> get_field( 'bidsquare_id', $term ),
+					'bidsquare_id'		=> get_field( 'bidsquare_id', $term ),
 				];
 				//echo '<li><pre>' . print_r( $auction_meta, true ) . '</pre></li>';
 				$auction_timestamp = ( ! is_null( $auction_meta['date'] ) )? strtotime( $auction_meta['date'] ) : null ;
@@ -131,11 +132,15 @@ function centric_item_auctioninfo() {
 
 				switch( $link_text ){
 					case 'Bid Now':
-						// Display LiveAuctioneers link
+						// Display LiveAuctioneers link or LotBiddingURL
 
 						$display_bid_now_button = boolval( get_field( 'display_bid_now_button', $term ) );
 						if( $display_bid_now_button ){
-							echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+							if( ! empty( $lot_bidding_url ) ){
+								echo '<li><a class="' . implode( ' ', $button_classes ) . '" href="' . $lot_bidding_url . '" target="_blank" title="Online bidding for ' . esc_attr( get_the_title() ) . '">Bid Now Online</a></li>';
+							} else {
+								echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
+							}
 						}
 						break;
 
