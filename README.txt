@@ -29,6 +29,9 @@ Please visit http://my.studiopress.com/help/ for theme support.
 
 CHANGELOG
 
+= 1.4.0 =
+* Handling display of `LotBiddingURL` in `single-item.php`.
+
 = 1.3.4 =
 * Replacing call to `sprintf` with `str_replace` in `centric_auction_table()` due to a parsing error.
 
