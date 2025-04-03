@@ -14,9 +14,10 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' ); // Remove `Filed U
 add_filter( 'genesis_build_crumbs', 'centric_item_build_crumbs', 10, 2 ); // Remove `Item`, add the auction to the breadcrumbs
 add_action( 'genesis_entry_content', 'centric_item_auctioninfo', 8 ); // Add .moreinfo box to item content
 
-$itemNumber = intval( get_post_meta( $post->ID, '_item_number', true ) );
-if( ! $itemNumber )
-	add_action( 'genesis_entry_content', 'centric_item_attachments', 20 ); // Add attached images to item content
+//$itemNumber = intval( get_post_meta( $post->ID, '_item_number', true ) );
+//if( ! $itemNumber )
+
+add_action( 'genesis_entry_content', 'centric_item_attachments', 20 ); // Add attached images to item content
 
 /**
  * Displays all images for an item
