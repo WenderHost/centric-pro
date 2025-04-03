@@ -1,0 +1,13 @@
+{
+	"name": "wenderhost/centric-pro-caseantiques",
+	"description": "Centric Pro WordPress Theme customized for Case Antiques",
+	"type": "wordpress-theme",
+	"license": "GPLv2",
+	"authors": [
+		{
+			"name": "Michael Wender",
+			"email": "mwender@wenmarkdigital.com",
+			"homepage": "https://wenmarkdigital.com"
+		}
+	]
+}
