@@ -3,9 +3,7 @@
 	"description": "Centric Pro WordPress Theme customized for Case Antiques",
 	"type": "wordpress-theme",
 	"license": "GPLv2",
-	"config": {
-		"vendor-dir": "centric-pro"
-	},
+	"version": "1.4.x-dev",
 	"authors": [
 		{
 			"name": "Michael Wender",
