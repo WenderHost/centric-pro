@@ -16,6 +16,9 @@ This is a modified version of the Genesis child theme Centric Pro for using on t
 
 == Changelog ==
 
+= 1.4.2 =
+* Specifying the `vendor-dir` as `centric-pro` in `composer.json`.
+
 = 1.4.1 =
 * Commenting out `itemNumber` check in `single-item.php`.
 * Converting `readme.txt` to a `wp_readme_to_markdown` compabible format.
