@@ -9,8 +9,10 @@
   "author": "Michael Wender",
   "license": "GPLv2",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-less": "^0.12.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt": "^1.3.0",
+    "grunt-contrib-less": "^3.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-wp-readme-to-markdown": "^2.0.1",
+    "grunt-wp-i18n": "^1.0.3"
   }
 }

@@ -57,12 +57,21 @@ module.exports = function(grunt) {
           nospawn: true
         }
       }
-    }
+    },
+    wp_readme_to_markdown: {
+      your_target: {
+        files: {
+          'README.md': 'readme.txt'
+        },
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
   grunt.registerTask('builddev', ['less:development','less:develementor']);
   grunt.registerTask('build', ['less:production']);
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('readme', ['wp_readme_to_markdown']);
 };
