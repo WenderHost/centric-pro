@@ -4,7 +4,7 @@
 **Requires at least:** 6.5  
 **Tested up to:** 6.7.2  
 **Requires PHP:** 8.1  
-**Stable tag:** 1.4.0  
+**Stable tag:** 1.4.1  
 **License:** GPLv2 or later  
 **License URL:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,6 +15,13 @@ A customized version of the Centric Pro theme for [caseantiques.com](https://cas
 This is a modified version of the Genesis child theme Centric Pro for using on the Case Antiques website.
 
 ## Changelog ##
+
+### 1.4.1 ###
+* Commenting out `itemNumber` check in `single-item.php`.
+* Converting `readme.txt` to a `wp_readme_to_markdown` compabible format.
+* Adding `grunt readme` build process.
+* Adding `README.md`.
+* Adding `composer.json` to allow for installing via `composer require`.
 
 ### 1.4.0 ###
 * Handling display of `LotBiddingURL` in `single-item.php`.
