@@ -6,7 +6,10 @@ include_once( get_template_directory() . '/lib/init.php' );
 include_once( get_stylesheet_directory() . '/lib/theme-defaults.php' );
 
 //* Set Localization (do not remove)
-load_child_theme_textdomain( 'centric', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'centric' ) );
+function centric_pro_load_textdomain(){
+  load_child_theme_textdomain( 'centric', apply_filters( 'child_theme_textdomain', get_stylesheet_directory() . '/languages', 'centric' ) );  
+}
+add_action( 'init', 'centric_pro_load_textdomain' );
 
 //* Child theme (do not remove)
 define( 'CHILD_THEME_NAME', __( 'Centric Theme', 'centric' ) );
