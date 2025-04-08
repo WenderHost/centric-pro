@@ -6,7 +6,9 @@ remove_action( 'genesis_meta', 'genesis_load_stylesheet' ); // Don't load style.
 function centric_load_scripts() {
   global $post;
   $body_classes = get_body_class();
-  $is_elementor_page = ( in_array('elementor-page elementor-page-' . $post->ID, $body_classes ) )? true : false ;
+
+  $post_id = ( isset( $post ) && $post instanceof WP_Post )? $post->ID : null ;
+  $is_elementor_page = ( in_array('elementor-page elementor-page-' . $post_id, $body_classes ) )? true : false ;
 
   wp_enqueue_style( 'google-fonts', '//fonts.googleapis.com/css?family=Lato:300,700|Spinnaker', array(), CHILD_THEME_VERSION );
   wp_enqueue_script( 'centric-global', get_bloginfo( 'stylesheet_directory' ) . '/js/global.js', array( 'jquery' ), filemtime( get_stylesheet_directory( '/js/global.js' ) ) , true );
