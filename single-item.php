@@ -77,6 +77,7 @@ function centric_item_auctioninfo() {
 	$high_est = get_post_meta( $post->ID, '_high_est', true );
 	$low_est = get_post_meta( $post->ID, '_low_est', true );
 	$realized = get_post_meta( $post->ID, '_realized', true );
+	$hammerprice = get_post_meta( $post->ID, '_hammerprice', true );
 	$lotnum = get_post_meta( $post->ID, '_lotnum', true );
 	$lot_bidding_url = get_post_meta( $post->ID, '_lot_bidding_url', true );
 
@@ -136,12 +137,8 @@ function centric_item_auctioninfo() {
 						// Display LiveAuctioneers link or LotBiddingURL
 
 						$display_bid_now_button = boolval( get_field( 'display_bid_now_button', $term ) );
-						if( $display_bid_now_button ){
-							if( ! empty( $lot_bidding_url ) ){
-								echo '<li><a class="' . implode( ' ', $button_classes ) . '" href="' . $lot_bidding_url . '" target="_blank" title="Online bidding for ' . esc_attr( get_the_title() ) . '">Bid Now Online</a></li>';
-							} else {
-								echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="http://www.liveauctioneers.com/itemLookup/'.$liveAuctioneersId.'/'.$lotnum.'" title="View ' . esc_attr( get_the_title() ) . ' on Live Auctioneers">'.$link_text.' on Live Auctioneers</a></li>';
-							}
+						if( $display_bid_now_button && ! empty( $lot_bidding_url ) ){
+							echo '<li><a class="' . implode( ' ', $button_classes ) . '" href="' . $lot_bidding_url . '" target="_blank" title="Online bidding for ' . esc_attr( get_the_title() ) . '">Bid Now Online</a></li>';
 						}
 						break;
 
@@ -157,25 +154,13 @@ function centric_item_auctioninfo() {
 
 						break;
 				}
-
-				// BID NOW: iGavel
-				if ( $igavel_lotnum = get_post_meta( $post->ID, '_igavel_lotnum', true ) ) {
-					$igavel_item_url = 'http://bid.igavelauctions.com/Bidding.taf?_function=detail&Auction_uid1=' . $igavel_lotnum;
-					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $igavel_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on iGavel">' . $link_text . ' on iGavel</a></li>';
-				}
-
-				// BID NOW: Bidsquare.com
-				if ( ! empty( $auction_meta['bidsquare_id'] ) && $bidsquare_lotnum = get_post_meta( $post->ID, '_bidsquare_lotnum', true ) ) {
-					$bidsquare_item_url = 'http://auctions.bidsquare.com/view-auctions/catalog/id/' . $auction_meta['bidsquare_id'] . '/lot/' . $bidsquare_lotnum;
-					echo '<li><a class="' . implode( ' ', $button_classes ) . '" target="_blank" href="' . $bidsquare_item_url . '" title="View ' . esc_attr( get_the_title() ) . ' on Bidsquare">' . $link_text . ' on Bidsquare</a></li>';
-				}
 			}
 		}
 	}
 
-	if ( !empty( $low_est ) ) echo '<li><strong>Low Estimate:</strong> '.AuctionShortcodes::format_price( $low_est ). '</li>';
-	if ( !empty( $high_est ) ) echo '<li><strong>High Estimate:</strong> '.AuctionShortcodes::format_price( $high_est ). '</li>';
-	if ( ! empty( $realized ) && is_numeric( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">'.AuctionShortcodes::format_price( $realized ). '</span></li>';
+	if ( ! empty( $low_est ) ) echo '<li><strong>Low Estimate:</strong> ' . AuctionShortcodes::format_price( $low_est ) . '</li>';
+	if ( ! empty( $high_est ) ) echo '<li><strong>High Estimate:</strong> ' . AuctionShortcodes::format_price( $high_est ) . '</li>';
+	if ( ! empty( $realized ) && is_numeric( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">' . AuctionShortcodes::format_price( $realized ) . '</span></li>';
 ?>
         <li><strong>Share this:</strong><br />
         	<div class="sharethis-inline-share-buttons"></div>
