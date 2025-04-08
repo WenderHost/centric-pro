@@ -24,7 +24,6 @@ require_once( get_stylesheet_directory() . '/lib/includes/acf.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/breadcrumbs.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/comments.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/enqueues.php' );
-require_once( get_stylesheet_directory() . '/lib/includes/footer.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/gravatars.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/image-sizes.php' );
 require_once( get_stylesheet_directory() . '/lib/includes/layout.php' );
