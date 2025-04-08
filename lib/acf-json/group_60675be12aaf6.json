@@ -6,6 +6,7 @@
             "key": "field_60675c5923752",
             "label": "Date",
             "name": "date",
+            "aria-label": "",
             "type": "date_picker",
             "instructions": "Select the date of this auction.",
             "required": 0,
@@ -23,6 +24,7 @@
             "key": "field_60675c7123753",
             "label": "Display realized prices?",
             "name": "show_realized",
+            "aria-label": "",
             "type": "checkbox",
             "instructions": "Show the <em>Realized Prices<\/em> column instead of the <em>Low\/High Estimate<\/em> columns when viewing this auction's table view?",
             "required": 0,
@@ -40,14 +42,16 @@
             "layout": "vertical",
             "toggle": 0,
             "return_format": "value",
-            "save_custom": 0
+            "save_custom": 0,
+            "custom_choice_button_text": "Add new choice"
         },
         {
             "key": "field_629a5e150b09e",
             "label": "Display \"BID NOW\" button?",
             "name": "display_bid_now_button",
+            "aria-label": "",
             "type": "radio",
-            "instructions": "Should we display the Live Auctioneers or Bidsquare \"BID NOW\" buttons for items in this auction? We typically turn off the BID NOW button when we have published an auction on our website but it is yet to be live on other third party sites.",
+            "instructions": "Should we display the \"BID NOW\" button for items in this auction?<br><br>NOTE: We typically turn off the BID NOW button when we have published an auction on our website but it is yet to be live on other third party sites. Once the auction is past, this switch has no effect because the button display is date-based.",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -59,50 +63,13 @@
                 "1": "Yes",
                 "0": "No"
             },
+            "default_value": 1,
+            "return_format": "value",
             "allow_null": 0,
             "other_choice": 0,
-            "default_value": 1,
+            "allow_in_bindings": 1,
             "layout": "horizontal",
-            "return_format": "value",
             "save_other_choice": 0
-        },
-        {
-            "key": "field_60675cd023754",
-            "label": "Live Auctioneers Auction ID",
-            "name": "auction_id",
-            "type": "text",
-            "instructions": "Add the Live Auctioneers Auction ID to display <strong>Bid Now<\/strong> and <strong>Sold Price<\/strong> links next to each item in this auction.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_60675cf723755",
-            "label": "Bidsquare Auction ID",
-            "name": "bidsquare_id",
-            "type": "text",
-            "instructions": "Add the BidSquare Auction ID to display <strong>Bid Now<\/strong> and <strong>Sold Price<\/strong> links next to each item in this auction.",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
         }
     ],
     "location": [
@@ -120,8 +87,9 @@
     "label_placement": "top",
     "instruction_placement": "label",
     "hide_on_screen": "",
-    "active": 1,
+    "active": true,
     "description": "",
+    "show_in_rest": 0,
     "json_save_path": "",
-    "modified": 1654284772
+    "modified": 1744130913
 }
