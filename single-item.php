@@ -153,7 +153,8 @@ function centric_item_auctioninfo() {
 
 	if ( ! empty( $low_est ) ) echo '<li><strong>Low Estimate:</strong> ' . AuctionShortcodes::format_price( $low_est ) . '</li>';
 	if ( ! empty( $high_est ) ) echo '<li><strong>High Estimate:</strong> ' . AuctionShortcodes::format_price( $high_est ) . '</li>';
-	if ( ! empty( $realized ) && is_numeric( $realized ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Realized:</strong> <span itemprop="price">' . AuctionShortcodes::format_price( $realized ) . '</span></li>';
+
+	if ( ! empty( $hammerprice ) && is_numeric( $hammerprice ) ) echo '<li itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"><strong>Hammer Price:</strong> <span itemprop="price">' . AuctionShortcodes::format_price( $hammerprice ) . '</span></li>';
 ?>
         <li><strong>Share this:</strong><br />
         	<div class="sharethis-inline-share-buttons"></div>
