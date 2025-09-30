@@ -38,46 +38,51 @@ require_once( get_stylesheet_directory() . '/lib/includes/widgets.php' );
  *
  * @since 1.0.0
  *
- * @param string $taxonomy Optional taxonomy name, if you don't set it, it will get it from get_query_vars
- * @param int $id Optional, taxonomy ID, if you don't set it, it will get it from get_query_vars
- * @param bool $link Optional, default is false. Whether to format with link.
- * @param string $separator Optional, default is '/'. How to separate categories.
- * @param bool $nicename Optional, default is false. Whether to use nice name for display.
- * @param array $visited Optional. Already linked to categories to prevent duplicates.
- * @return string|WP_Error A list of category parents on success, WP_Error on failure.
+ * @param string $taxonomy  Optional taxonomy name. Defaults to query var.
+ * @param int    $id        Optional taxonomy ID. Defaults to query var.
+ * @param bool   $link      Optional. Whether to format with link. Default false.
+ * @param string $separator Optional. Separator between terms. Default '/'.
+ * @param bool   $nicename  Optional. Whether to use slug instead of name. Default false.
+ * @param array  $visited   Optional. Prevents infinite loops. Default empty array.
+ * @return string A list of category parents, or empty string on failure.
  */
 function get_taxonomy_parents( $taxonomy = null, $id = null, $link = false, $separator = '/', $nicename = false, $visited = array() ) {
 
-  if ( ! isset( $taxonomy ) ) {
+  if ( ! $taxonomy ) {
     $taxonomy = get_query_var( 'taxonomy' );
   }
 
-  if ( ! isset( $id ) ) {
+  if ( ! $id ) {
     $term = get_term_by( 'name', single_tag_title( '', false ), $taxonomy );
+    if ( ! $term || is_wp_error( $term ) ) {
+      return ''; // Bail if invalid.
+    }
     $id = $term->term_id;
   }
 
-  $chain = '';
+  $chain  = '';
   $parent = get_term( $id, $taxonomy );
-  if ( is_wp_error( $parent ) )
-    return $parent;
 
-  if ( $nicename ) {
-    $name = $parent->slug;
-  } else {
-    $name = $parent->name;
+  if ( ! $parent || is_wp_error( $parent ) ) {
+    return ''; // Bail gracefully.
   }
 
-  if ( $parent->parent && ( $parent->parent != $parent->term_id ) && ! in_array( $parent->parent, $visited ) )
-  {
+  $name = $nicename ? $parent->slug : $parent->name;
+
+  if ( $parent->parent && ( $parent->parent != $parent->term_id ) && ! in_array( $parent->parent, $visited, true ) ) {
     $visited[] = $parent->parent;
-    $chain .= get_taxonomy_parents( $taxonomy, $parent->parent, $link, $separator, $nicename, $visited );
+    $chain    .= get_taxonomy_parents( $taxonomy, $parent->parent, $link, $separator, $nicename, $visited );
   }
 
   if ( $link ) {
-    $chain .= '<a href="' . get_term_link( $parent->slug, $taxonomy ) . '">' . $name . '</a>' . $separator;
+    $term_link = get_term_link( $parent, $taxonomy );
+    if ( ! is_wp_error( $term_link ) ) {
+      $chain .= '<a href="' . esc_url( $term_link ) . '">' . esc_html( $name ) . '</a>' . $separator;
+    } else {
+      $chain .= esc_html( $name ) . $separator; // Fallback if link failed.
+    }
   } else {
-    $chain .= $parent->name . $separator;
+    $chain .= esc_html( $name ) . $separator;
   }
 
   return $chain;

@@ -4,7 +4,7 @@
 **Requires at least:** 6.5  
 **Tested up to:** 6.7.2  
 **Requires PHP:** 8.1  
-**Stable tag:** 1.4.6.2  
+**Stable tag:** 1.5.0  
 **License:** GPLv2 or later  
 **License URL:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -15,6 +15,9 @@ A customized version of the Centric Pro theme for [caseantiques.com](https://cas
 This is a modified version of the Genesis child theme Centric Pro for using on the Case Antiques website.
 
 ## Changelog ##
+
+### 1.5.0 ###
+* Adding graceful fallbacks to `get_taxonomy_parents()`.
 
 ### 1.4.6.2 ###
 * BUGFIX: Same bug as `1.4.6.1` was present in `taxonomy-item_category.php`.
