@@ -1,7 +1,7 @@
 {
 	"name": "wenderhost/centric-pro",
-	"version": "1.4.6.2",
 	"description": "Centric Pro WordPress Theme customized for Case Antiques",
+	"version": "1.4.6.2",
 	"type": "wordpress-theme",
 	"license": "GPLv2",
 	"authors": [
