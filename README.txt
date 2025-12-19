@@ -4,7 +4,7 @@ Tags: genesis, centricpro
 Requires at least: 6.5
 Tested up to: 6.7.2
 Requires PHP: 8.1
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URL: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,11 +16,11 @@ This is a modified version of the Genesis child theme Centric Pro for using on t
 
 == Changelog ==
 
+= 1.5.1 =
+* Mobile Styling Fixes (`max-width: 500px`) for the Auction Index pages by removing left/right padding in `.auction-table-wrap` in `lib/less/_plugins.less`, and setting margin to "0" for `.tax-auction .site-inner .wrap` in `lib/less/_content-area.less`.
+
 = 1.5.0 =
 * Adding graceful fallbacks to `get_taxonomy_parents()`.
-
-= 1.4.7 =
-* Mobile Styling Fixes (`max-width: 500px`) for the Auction Index pages by removing left/right padding in `.auction-table-wrap` in `lib/less/_plugins.less`, and setting margin to "0" for `.tax-auction .site-inner .wrap` in `lib/less/_content-area.less`.
 
 = 1.4.6.2 =
 * BUGFIX: Same bug as `1.4.6.1` was present in `taxonomy-item_category.php`.
